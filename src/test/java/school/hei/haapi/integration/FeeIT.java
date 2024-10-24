@@ -61,8 +61,8 @@ class FeeIT extends MockedThirdParties {
   private school.hei.haapi.model.Fee getFeeByIdWithoutJpaFiltering(String feeId) {
     try {
       Query q =
-          entityManager.createNativeQuery(
-              "SELECT * FROM \"fee\" where id = ?", school.hei.haapi.model.Fee.class);
+              entityManager.createNativeQuery(
+                      "SELECT * FROM \"fee\" where id = ?", school.hei.haapi.model.Fee.class);
       q.setParameter(1, feeId);
       return (school.hei.haapi.model.Fee) q.getSingleResult();
     } catch (NullPointerException e) {
@@ -83,14 +83,14 @@ class FeeIT extends MockedThirdParties {
   @Test
   @Disabled
   void update_fee_status_payment_is_persisted()
-      throws InterruptedException, JsonProcessingException {
+          throws InterruptedException, JsonProcessingException {
     UpdateFeesStatusToLateTriggered feesStatusToLateTriggered =
-        UpdateFeesStatusToLateTriggered.builder().build();
+            UpdateFeesStatusToLateTriggered.builder().build();
 
     TypedEvent typedEvent =
-        new TypedEvent(
-            "school.hei.haapi.endpoint.event.model.UpdateFeesStatusToLateTriggered",
-            feesStatusToLateTriggered);
+            new TypedEvent(
+                    "school.hei.haapi.endpoint.event.model.UpdateFeesStatusToLateTriggered",
+                    feesStatusToLateTriggered);
     ConsumableEvent consumableEvent = new ConsumableEvent(typedEvent, null, null);
     subject.accept(List.of(consumableEvent));
   }
@@ -180,14 +180,14 @@ class FeeIT extends MockedThirdParties {
     PayingApi api = new PayingApi(student1Client);
 
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.getStudentFeeById(STUDENT2_ID, FEE2_ID));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.getStudentFeeById(STUDENT2_ID, FEE2_ID));
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.getStudentFees(STUDENT2_ID, null, null, null));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.getStudentFees(STUDENT2_ID, null, null, null));
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.getFees(null, null, null, null, null, false, null));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.getFees(null, null, null, null, null, false, null));
   }
 
   @Test
@@ -206,14 +206,14 @@ class FeeIT extends MockedThirdParties {
     PayingApi api = new PayingApi(teacher1Client);
 
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.getStudentFeeById(STUDENT2_ID, FEE2_ID));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.getStudentFeeById(STUDENT2_ID, FEE2_ID));
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.getStudentFees(STUDENT2_ID, null, null, null));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.getStudentFees(STUDENT2_ID, null, null, null));
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.getFees(null, null, null, null, null, false, null));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.getFees(null, null, null, null, null, false, null));
   }
 
   @Test
@@ -241,8 +241,8 @@ class FeeIT extends MockedThirdParties {
     createFee.setType(REMEDIAL_COSTS);
 
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.createStudentFees(STUDENT2_ID, List.of(createFee)));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.createStudentFees(STUDENT2_ID, List.of(createFee)));
   }
 
   @Test
@@ -251,7 +251,7 @@ class FeeIT extends MockedThirdParties {
     PayingApi api = new PayingApi(manager1Client);
 
     Fee updatedFee =
-        fee1().comment("M1 + M2 + M3").dueDatetime(Instant.parse("2021-11-09T10:10:10.00Z"));
+            fee1().comment("M1 + M2 + M3").dueDatetime(Instant.parse("2021-11-09T10:10:10.00Z"));
 
     List<Fee> actual = api.createStudentFees(STUDENT1_ID, List.of(creatableFee1()));
 
@@ -266,7 +266,7 @@ class FeeIT extends MockedThirdParties {
     assertTrue(expected.containsAll(actual));
 
     List<Fee> crupdatedStudentFees =
-        api.crupdateStudentFees(List.of(creatableStudentFee(), updatableStudentFee()));
+            api.crupdateStudentFees(List.of(creatableStudentFee(), updatableStudentFee()));
 
     List<Fee> student1Fees = api.getStudentFees(STUDENT1_ID, 1, 10, null);
 
@@ -280,13 +280,13 @@ class FeeIT extends MockedThirdParties {
     ApiClient monitor1Client = anApiClient(MONITOR1_TOKEN);
     PayingApi api = new PayingApi(monitor1Client);
     Fee feeUpdated =
-        fee1().comment("nex comment").dueDatetime(Instant.parse("2021-11-09T10:10:10.00Z"));
+            fee1().comment("nex comment").dueDatetime(Instant.parse("2021-11-09T10:10:10.00Z"));
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.updateStudentFees(STUDENT1_ID, List.of(feeUpdated)));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.updateStudentFees(STUDENT1_ID, List.of(feeUpdated)));
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.createStudentFees(STUDENT1_ID, List.of()));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.createStudentFees(STUDENT1_ID, List.of()));
   }
 
   @Test
@@ -294,13 +294,13 @@ class FeeIT extends MockedThirdParties {
     ApiClient teacher1Client = anApiClient(TEACHER1_TOKEN);
     PayingApi api = new PayingApi(teacher1Client);
     Fee feeUpdated =
-        fee1().comment("nex comment").dueDatetime(Instant.parse("2021-11-09T10:10:10.00Z"));
+            fee1().comment("nex comment").dueDatetime(Instant.parse("2021-11-09T10:10:10.00Z"));
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.updateStudentFees(STUDENT1_ID, List.of(feeUpdated)));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.updateStudentFees(STUDENT1_ID, List.of(feeUpdated)));
     assertThrowsApiException(
-        "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
-        () -> api.createStudentFees(STUDENT1_ID, List.of()));
+            "{\"type\":\"403 FORBIDDEN\",\"message\":\"Access is denied\"}",
+            () -> api.createStudentFees(STUDENT1_ID, List.of()));
   }
 
   @DirtiesContext
@@ -315,40 +315,40 @@ class FeeIT extends MockedThirdParties {
     List<Fee> expected = api.getStudentFees(STUDENT1_ID, 1, 5, null);
 
     ApiException exception1 =
-        assertThrows(
-            ApiException.class, () -> api.createStudentFees(STUDENT1_ID, List.of(toCreate1)));
+            assertThrows(
+                    ApiException.class, () -> api.createStudentFees(STUDENT1_ID, List.of(toCreate1)));
     ApiException exception2 =
-        assertThrows(
-            ApiException.class, () -> api.createStudentFees(STUDENT1_ID, List.of(toCreate2)));
+            assertThrows(
+                    ApiException.class, () -> api.createStudentFees(STUDENT1_ID, List.of(toCreate2)));
     ApiException exception3 =
-        assertThrows(
-            ApiException.class, () -> api.createStudentFees(STUDENT1_ID, List.of(toCreate3)));
+            assertThrows(
+                    ApiException.class, () -> api.createStudentFees(STUDENT1_ID, List.of(toCreate3)));
     ApiException exception4 =
-        assertThrows(
-            ApiException.class, () -> api.updateStudentFees(STUDENT1_ID, List.of(fee1().id(null))));
+            assertThrows(
+                    ApiException.class, () -> api.updateStudentFees(STUDENT1_ID, List.of(fee1().id(null))));
     ApiException exception6 =
-        assertThrows(
-            ApiException.class,
-            () -> api.updateStudentFees(STUDENT1_ID, List.of(fee1().type(HARDWARE))));
+            assertThrows(
+                    ApiException.class,
+                    () -> api.updateStudentFees(STUDENT1_ID, List.of(fee1().type(HARDWARE))));
     ApiException exception7 =
-        assertThrows(
-            ApiException.class,
-            () -> api.updateStudentFees(STUDENT1_ID, List.of(fee1().remainingAmount(10))));
+            assertThrows(
+                    ApiException.class,
+                    () -> api.updateStudentFees(STUDENT1_ID, List.of(fee1().remainingAmount(10))));
     ApiException exception9 =
-        assertThrows(
-            ApiException.class,
-            () -> api.updateStudentFees(STUDENT1_ID, List.of(fee1().totalAmount(10))));
+            assertThrows(
+                    ApiException.class,
+                    () -> api.updateStudentFees(STUDENT1_ID, List.of(fee1().totalAmount(10))));
     ApiException exception10 =
-        assertThrows(
-            ApiException.class,
-            () ->
-                api.updateStudentFees(
-                    STUDENT1_ID,
-                    List.of(fee1().creationDatetime(Instant.parse("2021-11-09T10:10:10.00Z")))));
+            assertThrows(
+                    ApiException.class,
+                    () ->
+                            api.updateStudentFees(
+                                    STUDENT1_ID,
+                                    List.of(fee1().creationDatetime(Instant.parse("2021-11-09T10:10:10.00Z")))));
     ApiException exception11 =
-        assertThrows(
-            ApiException.class,
-            () -> api.updateStudentFees(STUDENT1_ID, List.of(fee1().id(wrongId))));
+            assertThrows(
+                    ApiException.class,
+                    () -> api.updateStudentFees(STUDENT1_ID, List.of(fee1().id(wrongId))));
 
     String exceptionMessage1 = exception1.getMessage();
     String exceptionMessage2 = exception2.getMessage();
@@ -385,14 +385,14 @@ class FeeIT extends MockedThirdParties {
     assertEquals(5, feesDefault.size());
 
     List<Fee> feeByMonth =
-        api.getFees(
-            null,
-            Instant.parse("2021-12-01T00:00:00.00Z"),
-            Instant.parse("2021-12-31T23:59:59.00Z"),
-            1,
-            10,
-            false,
-            null);
+            api.getFees(
+                    null,
+                    Instant.parse("2021-12-01T00:00:00.00Z"),
+                    Instant.parse("2021-12-31T23:59:59.00Z"),
+                    1,
+                    10,
+                    false,
+                    null);
     assertEquals(7, feeByMonth.size());
     assertTrue(feeByMonth.contains(fee1()));
     assertTrue(feeByMonth.contains(fee2()));
@@ -400,63 +400,63 @@ class FeeIT extends MockedThirdParties {
     assertTrue(feeByMonth.contains(fee4()));
 
     List<Fee> noFeeByMonth =
-        api.getFees(
-            null,
-            Instant.parse("2021-10-01T00:00:00.00Z"),
-            Instant.parse("2021-10-31T23:59:59.00Z"),
-            1,
-            10,
-            false,
-            null);
+            api.getFees(
+                    null,
+                    Instant.parse("2021-10-01T00:00:00.00Z"),
+                    Instant.parse("2021-10-31T23:59:59.00Z"),
+                    1,
+                    10,
+                    false,
+                    null);
     assertEquals(0, noFeeByMonth.size());
 
     List<Fee> feeByStatusLateAndMonth =
-        api.getFees(
-            LATE.toString(),
-            Instant.parse("2021-12-01T00:00:00.00Z"),
-            Instant.parse("2021-12-31T23:59:59.00Z"),
-            1,
-            10,
-            false,
-            null);
+            api.getFees(
+                    LATE.toString(),
+                    Instant.parse("2021-12-01T00:00:00.00Z"),
+                    Instant.parse("2021-12-31T23:59:59.00Z"),
+                    1,
+                    10,
+                    false,
+                    null);
     assertEquals(5, feeByStatusLateAndMonth.size());
     assertTrue(feeByStatusLateAndMonth.contains(fee3()));
     assertTrue(feeByStatusLateAndMonth.contains(fee4()));
 
     List<Fee> feeByStatusPaidAndMonth =
-        api.getFees(
-            PAID.toString(),
-            Instant.parse("2021-12-01T00:00:00.00Z"),
-            Instant.parse("2021-12-31T23:59:59.00Z"),
-            1,
-            10,
-            false,
-            null);
+            api.getFees(
+                    PAID.toString(),
+                    Instant.parse("2021-12-01T00:00:00.00Z"),
+                    Instant.parse("2021-12-31T23:59:59.00Z"),
+                    1,
+                    10,
+                    false,
+                    null);
     assertEquals(2, feeByStatusPaidAndMonth.size());
     assertTrue(feeByStatusPaidAndMonth.contains(fee1()));
     assertTrue(feeByStatusPaidAndMonth.contains(fee2()));
 
     List<Fee> feeByStatusLateAndMonthAndStudentRef =
-        api.getFees(
-            LATE.toString(),
-            Instant.parse("2021-12-01T00:00:00.00Z"),
-            Instant.parse("2021-12-31T23:59:59.00Z"),
-            1,
-            10,
-            false,
-            "STD21002");
+            api.getFees(
+                    LATE.toString(),
+                    Instant.parse("2021-12-01T00:00:00.00Z"),
+                    Instant.parse("2021-12-31T23:59:59.00Z"),
+                    1,
+                    10,
+                    false,
+                    "STD21002");
     assertEquals(2, feeByStatusLateAndMonthAndStudentRef.size());
     assertTrue(feeByStatusLateAndMonthAndStudentRef.contains(fee4()));
 
     List<Fee> feeIsMpbsByMonth =
-        api.getFees(
-            null,
-            Instant.parse("2021-12-01T00:00:00.00Z"),
-            Instant.parse("2021-12-31T23:59:59.00Z"),
-            1,
-            10,
-            true,
-            null);
+            api.getFees(
+                    null,
+                    Instant.parse("2021-12-01T00:00:00.00Z"),
+                    Instant.parse("2021-12-31T23:59:59.00Z"),
+                    1,
+                    10,
+                    true,
+                    null);
     assertEquals(1, feeIsMpbsByMonth.size());
     assertEquals(feeIsMpbsByMonth.getFirst(), fee1());
   }
@@ -467,14 +467,14 @@ class FeeIT extends MockedThirdParties {
     PayingApi api = new PayingApi(manager1Client);
 
     FeesStatistics stats =
-        api.getFeesStats(
-            Instant.parse("2021-12-01T00:00:00.00Z"), Instant.parse("2021-12-31T00:00:00.00Z"));
+            api.getFeesStats(
+                    Instant.parse("2021-12-01T00:00:00.00Z"), Instant.parse("2021-12-31T00:00:00.00Z"));
     assertEquals(7, stats.getTotalFees());
     assertEquals(2, stats.getPaidFees());
     assertEquals(0, stats.getUnpaidFees());
 
     FeesStatistics statsWithDefaultMonthRange =
-        api.getFeesStats(null, null); // get statistics for this month
+            api.getFeesStats(null, null); // get statistics for this month
     assertEquals(0, statsWithDefaultMonthRange.getTotalFees());
   }
 
