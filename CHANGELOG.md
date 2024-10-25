@@ -1,3 +1,12 @@
+## [1.72.1](https://github.com/hei-school/hei-admin-api/compare/v1.72.0...v1.72.1) (2024-10-25)
+
+
+### Bug Fixes
+
+* exam response must be list  ([07499e9](https://github.com/hei-school/hei-admin-api/commit/07499e984e43211f608540c1849dbdfc43fc6fe8))
+
+
+
 # [1.72.0](https://github.com/hei-school/hei-admin-api/compare/v1.71.0...v1.72.0) (2024-10-24)
 
 
@@ -104,7 +113,6 @@
 ### Features
 
 * manager crupdate student fee endpoint ([af5a204](https://github.com/hei-school/hei-admin-api/commit/af5a2049db4d6b7ea65f25f56f347d7b38d2c815))
-
 
 
 # [1.63.0](https://github.com/hei-school/hei-admin-api/compare/v1.62.0...v1.63.0) (2024-10-11)
