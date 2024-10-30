@@ -50,7 +50,6 @@ public class Mpbs extends TypedMobileMoneyTransaction implements Serializable {
   @OneToOne
   @JoinColumn(name = "fee_id")
   @ToString.Exclude
-
   private Fee fee;
 
   @Column(name = "\"status\"")
