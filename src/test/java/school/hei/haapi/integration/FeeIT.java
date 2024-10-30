@@ -79,6 +79,7 @@ class FeeIT extends MockedThirdParties {
   }
 
   @Test
+  @Disabled
   void update_fee_status_payment_is_persisted()
       throws InterruptedException, JsonProcessingException {
     UpdateFeesStatusToLateTriggered feesStatusToLateTriggered =

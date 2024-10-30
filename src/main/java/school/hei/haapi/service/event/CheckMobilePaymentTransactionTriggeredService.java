@@ -9,12 +9,12 @@ import school.hei.haapi.service.MpbsVerificationService;
 @Service
 @AllArgsConstructor
 public class CheckMobilePaymentTransactionTriggeredService
-        implements Consumer<CheckMobilePaymentTransactionTriggered> {
+    implements Consumer<CheckMobilePaymentTransactionTriggered> {
   private final MpbsVerificationService mpbsVerificationService;
 
   @Override
   public void accept(
-          CheckMobilePaymentTransactionTriggered checkMobilePaymentTransactionTriggered) {
+      CheckMobilePaymentTransactionTriggered checkMobilePaymentTransactionTriggered) {
     mpbsVerificationService.checkMobilePaymentThenSaveVerification();
   }
 }
