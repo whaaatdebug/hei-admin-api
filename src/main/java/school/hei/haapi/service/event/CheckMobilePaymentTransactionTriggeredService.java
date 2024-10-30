@@ -15,6 +15,6 @@ public class CheckMobilePaymentTransactionTriggeredService
   @Override
   public void accept(
       CheckMobilePaymentTransactionTriggered checkMobilePaymentTransactionTriggered) {
-    mpbsVerificationService.checkMobilePaymentThenSaveVerification();
+    mpbsVerificationService.firePendingMpbsCheckEvents();
   }
 }
