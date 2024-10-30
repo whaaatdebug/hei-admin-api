@@ -1,23 +1,4 @@
-## [1.72.1](https://github.com/hei-school/hei-admin-api/compare/v1.72.0...v1.72.1) (2024-10-25)
-
-
-### Bug Fixes
-
-* exam response must be list  ([07499e9](https://github.com/hei-school/hei-admin-api/commit/07499e984e43211f608540c1849dbdfc43fc6fe8))
-
-
-
-# [1.72.0](https://github.com/hei-school/hei-admin-api/compare/v1.71.0...v1.72.0) (2024-10-24)
-
-
-### Features
-
-* generate students group in xlsx  ([b761cd4](https://github.com/hei-school/hei-admin-api/commit/b761cd4378f5cdb0cf598ce2fa6c9c5ff5256cd5))
-* **not-implemented:** get monthy fees statistics  ([b1a0ee2](https://github.com/hei-school/hei-admin-api/commit/b1a0ee2ab597b67f90d090dbbe336242b9735fc9))
-
-
-
-# [1.71.0](https://github.com/hei-school/hei-admin-api/compare/v1.70.0...v1.71.0) (2024-10-24)
+# [1.74.0](https://github.com/hei-school/hei-admin-api/compare/v1.70.0...v1.74.0) (2024-11-06)
 
 
 ### Bug Fixes
@@ -115,12 +96,14 @@
 * manager crupdate student fee endpoint ([af5a204](https://github.com/hei-school/hei-admin-api/commit/af5a2049db4d6b7ea65f25f56f347d7b38d2c815))
 
 
+
 # [1.63.0](https://github.com/hei-school/hei-admin-api/compare/v1.62.0...v1.63.0) (2024-10-11)
 
 
 ### Features
 
 * modify request body in linking students to monitor endpoint ([0de28a1](https://github.com/hei-school/hei-admin-api/commit/0de28a13e4504ed49d764990c419666b136cb3a1))
+
 
 
 # [1.62.0](https://github.com/hei-school/hei-admin-api/compare/v1.61.0...v1.62.0) (2024-10-09)
@@ -135,4 +118,5 @@
 
 * **not implemented:** crupdate student fees ([598a7fd](https://github.com/hei-school/hei-admin-api/commit/598a7fd8803218e7a37f7c3be1e76c3eba29d1b5))
 * scheduled cron job to update student status  ([af972bd](https://github.com/hei-school/hei-admin-api/commit/af972bd3481ad3b24593ecbbb713dd4efb740870))
+
 
