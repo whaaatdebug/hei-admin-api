@@ -35,6 +35,7 @@ public abstract class AbstractContextInitializer
         "spring.datasource.password=" + postgresContainer.getPassword(),
         "spring.flyway.locations=classpath:/db/migration," + flywayTestdataPath,
         "OWNCLOUD_BASE_URL=https://owncloud.example.com",
+        "ORANGE_SCRAPPER_BASEURL=https://scrapper.com",
         "OWNCLOUD_USERNAME=dummy",
         "OWNCLOUD_PASSWORD=dummy");
   }

@@ -10,6 +10,7 @@ public class EnvConf {
     registry.add("aws.ses.contact", () -> "dummy");
     registry.add("aws.cognito.userPool.id", () -> "dummy");
     registry.add("OWNCLOUD_BASE_URL", () -> "https://owncloud.example.com");
+    registry.add("ORANGE_SCRAPPER_BASEURL", () -> "https://scrapper.com");
     registry.add("OWNCLOUD_USERNAME", () -> "dummy");
     registry.add("OWNCLOUD_PASSWORD", () -> "dummy");
   }
