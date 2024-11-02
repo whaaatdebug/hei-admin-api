@@ -49,7 +49,7 @@ class OrangeScrappingApi implements MobileMoneyApi {
 
   @Override
   public List<TransactionDetails> fetchThenSaveTransactionsDetails(MobileMoneyType type) {
-    String PATH = "/transactions?date=" + Instant.parse("2024-10-31T08:00:00Z");
+    String PATH = "/transactions?date=" + getYesterday();
     HttpRequest httpRequest =
         HttpRequest.newBuilder().uri(URI.create(baseUrl + PATH)).GET().build();
     OrangeDailyTransactionScrappingDetails a;
