@@ -9,6 +9,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Instant;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,7 +49,7 @@ class OrangeScrappingApi implements MobileMoneyApi {
 
   @Override
   public List<TransactionDetails> fetchThenSaveTransactionsDetails(MobileMoneyType type) {
-    String PATH = "/transactions?date=" + getYesterday();
+    String PATH = "/transactions?date=" + Instant.parse("2024-10-31T08:00:00Z");
     HttpRequest httpRequest =
         HttpRequest.newBuilder().uri(URI.create(baseUrl + PATH)).GET().build();
     OrangeDailyTransactionScrappingDetails a;
