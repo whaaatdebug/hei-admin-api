@@ -76,6 +76,7 @@ import school.hei.haapi.endpoint.rest.model.CreateComment;
 import school.hei.haapi.endpoint.rest.model.CreateEvent;
 import school.hei.haapi.endpoint.rest.model.CreateFee;
 import school.hei.haapi.endpoint.rest.model.CreateGrade;
+import school.hei.haapi.endpoint.rest.model.CrupdateExam;
 import school.hei.haapi.endpoint.rest.model.CrupdateFeeTemplate;
 import school.hei.haapi.endpoint.rest.model.CrupdatePromotion;
 import school.hei.haapi.endpoint.rest.model.CrupdateStudentFee;
@@ -728,6 +729,15 @@ public class TestUtils {
         .mainTeacher(teacher4());
   }
 
+  public static CrupdateExam createExam1() {
+    return new CrupdateExam()
+        .id(EXAM1_ID)
+        .coefficient(2)
+        .title("Algorithmics")
+        .awardedCourseId(awardedCourse1().getId())
+        .examinationDate(Instant.parse("2022-10-09T08:25:24Z"));
+  }
+
   public static ExamInfo exam1() {
     return new ExamInfo()
         .id(EXAM1_ID)
@@ -760,7 +770,7 @@ public class TestUtils {
         .id(EXAM4_ID)
         .coefficient(3)
         .title("Algorithmics2")
-        .awardedCourse(awardedCourse4())
+        .awardedCourse(awardedCourse2())
         .examinationDate(Instant.parse("2022-11-09T08:25:24Z"));
   }
 

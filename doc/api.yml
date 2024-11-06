@@ -947,6 +947,82 @@ paths:
           $ref: '#/components/responses/429'
         '500':
           $ref: '#/components/responses/500'
+  /exams:
+    get:
+      tags:
+        - Teaching
+      summary: Get all exam infos.
+      parameters:
+        - name: awarded_course_id
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: title
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            $ref: '#/components/schemas/Page'
+          description: Set value to 1 by default if null is provided
+          required: false
+        - name: page_size
+          in: query
+          description: Set value to 15 by default if null is provided
+          schema:
+            $ref: '#/components/schemas/PageSize'
+      operationId: getAllExams
+      responses:
+        '200':
+          description: List of exam infos without the participants
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExamInfo'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    put:
+      tags:
+        - Teaching
+      summary: Create new exams or update existing exams
+      operationId: CreateOrUpdateExamsInfos
+      requestBody:
+        required: true
+        description: Exams to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrupdateExam'
+      responses:
+        '200':
+          description: Exams infos without the students participated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamInfo'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
   /awarded_courses/{awarded_course_id}/exams/{exam_id}:
     get:
       tags:
@@ -1150,6 +1226,7 @@ paths:
       tags:
         - Teaching
       summary: Get all students as xlsx file of a group
+      operationId: generateStudentsGroupInXlsx
       parameters:
         - name: id
           in: path
@@ -2025,7 +2102,7 @@ paths:
     get:
       tags:
         - Paying
-      summary: Get all student fees filtered by status
+      summary: Get all student fees filtered by status and month
       parameters:
         - name: status
           in: query
@@ -2037,6 +2114,18 @@ paths:
               - UNPAID
               - LATE
               - PAID
+        - name: month_from
+          in: query
+          schema:
+            type: string
+            format: date-time
+          required: false
+        - name: month_to
+          in: query
+          schema:
+            type: string
+            format: date-time
+          required: false
         - name: page
           in: query
           schema:
@@ -2074,7 +2163,32 @@ paths:
           $ref: '#/components/responses/429'
         '500':
           $ref: '#/components/responses/500'
-
+  /fees/stats:
+    get:
+      tags:
+        - Paying
+      summary: Get monthly statistics on Fees, the actual month by default
+      parameters:
+        - name: month_from
+          in: query
+          schema:
+            type: string
+            format: date-time
+          required: false
+        - name: month_to
+          in: query
+          schema:
+            type: string
+            format: date-time
+          required: false
+      operationId: getFeesStats
+      responses:
+        '200':
+          description: Fees stats info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeesStatistics'
   /fees/templates:
     get:
       tags:
@@ -3359,6 +3473,34 @@ paths:
           $ref: '#/components/responses/429'
         '500':
           $ref: '#/components/responses/500'
+  /events/{id}/stats:
+    get:
+      tags:
+        - Events
+      operationId: Get stats for the given event
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Events stats
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventStats'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
   /events/{id}/participants:
     get:
       tags:
@@ -4440,6 +4582,7 @@ components:
         - SEMINAR
         - SUPPORT_SESSION
         - OTHER
+
     StudentAttendance:
       type: object
       properties:
@@ -4723,6 +4866,20 @@ components:
           format: date-time
         awarded_course:
           $ref: '#/components/schemas/AwardedCourse'
+    CrupdateExam:
+      type: object
+      properties:
+        id:
+          type: string
+        coefficient:
+          type: integer
+        title:
+          type: string
+        examination_date:
+          type: string
+          format: date-time
+        awarded_course_id:
+          type: string
     Grade:
       type: object
       required:
@@ -5112,6 +5269,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupIdentifier'
+    EventStats:
+      type: object
+      properties:
+        missing:
+          type: integer
+        present:
+          type: integer
+        late:
+          type: integer
+        total:
+          type: integer
     CrupdatePromotion:
       type: object
       properties:
@@ -5326,6 +5494,15 @@ components:
         enabled:
           type: integer
         suspended:
+          type: integer
+    FeesStatistics:
+      type: object
+      properties:
+        total_fees:
+          type: integer
+        paid_fees:
+          type: integer
+        unpaid_fees:
           type: integer
     Letter:
       type: object

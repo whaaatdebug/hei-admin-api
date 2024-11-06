@@ -2,6 +2,7 @@ package school.hei.haapi.repository;
 
 import java.time.Instant;
 import java.util.List;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -37,6 +38,27 @@ public interface FeeRepository extends JpaRepository<Fee, String> {
   List<Fee> getUnpaidFeesForTheMonthSpecified(Integer month);
 
   @Query(
+      value =
+          """
+    SELECT
+        f
+    FROM
+        Fee f
+    JOIN
+        User u ON f.student = u
+    WHERE
+        f.student.id = :studentId
+    ORDER BY
+      CASE
+        WHEN f.status = 'LATE' THEN 1
+        WHEN f.status = 'UNPAID' THEN 2
+        WHEN f.status = 'PAID' THEN 3
+      END,
+      f.dueDatetime DESC
+      """)
+  Page<Fee> getFeesByStudentId(String studentId, Pageable pageable);
+
+  @Query(
       """
         select f from Fee f
         left join User u on f.student = u
@@ -56,4 +78,16 @@ public interface FeeRepository extends JpaRepository<Fee, String> {
       @Param(value = "status") FeeStatusEnum status, @Param(value = "fee_id") String feeId);
 
   List<Fee> findAllByStudentRef(String studentRef, Pageable pageable);
+
+  @Query(
+      """
+          SELECT
+            COUNT(f) AS totalFees,
+            SUM(CASE WHEN f.status = 'PAID' THEN 1 ELSE 0 END) AS paidFees,
+            SUM(CASE WHEN f.status = 'UNPAID' THEN 1 ELSE 0 END) AS unpaidFees
+          FROM Fee f
+          WHERE f.dueDatetime BETWEEN :from AND :to
+          """)
+  List<Object[]> getMonthlyFeeStatistics(
+      @Param(value = "from") Instant monthFrom, @Param(value = "to") Instant monthTo);
 }

@@ -32,6 +32,7 @@ import school.hei.haapi.repository.GroupRepository;
 import school.hei.haapi.repository.UserRepository;
 import school.hei.haapi.repository.dao.UserManagerDao;
 import school.hei.haapi.service.aws.FileService;
+import school.hei.haapi.service.utils.XlsxCellsGenerator;
 
 @Service
 @AllArgsConstructor
@@ -196,6 +197,8 @@ public class UserService {
       WorkStudyStatus workStatus,
       Instant commitmentBeginDate,
       List<String> excludeGroupIds) {
+    log.info("Page = {}", page.getValue());
+    log.info("PageSize = {}", pageSize.getValue());
     Pageable pageable =
         PageRequest.of(page.getValue() - 1, pageSize.getValue(), Sort.by(ASC, "ref"));
     return userManagerDao.findByCriteria(
@@ -215,6 +218,12 @@ public class UserService {
 
   public List<User> getByGroupId(String groupId) {
     return userRepository.findAllRemainingStudentsByGroupId(groupId);
+  }
+
+  public byte[] generateStudentsGroup(String groupId) {
+    XlsxCellsGenerator<User> xlsxCellsGenerator = new XlsxCellsGenerator<>();
+    List<User> studentsGroup = getByGroupId(groupId);
+    return xlsxCellsGenerator.apply(studentsGroup, List.of("ref", "firstName", "lastName"));
   }
 
   public List<User> getByGroupIdWithFilter(
