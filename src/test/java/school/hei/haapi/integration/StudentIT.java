@@ -119,12 +119,12 @@ public class StudentIT extends MockedThirdParties {
 
   public static CrupdateStudent someUpdatableStudent() {
     return createStudent1()
-            .address("Adr 999")
-            .sex(F)
-            .lastName("Other last")
-            .firstName("Other first")
-            .specializationField(TN)
-            .birthDate(LocalDate.parse("2000-01-03"));
+        .address("Adr 999")
+        .sex(F)
+        .lastName("Other last")
+        .firstName("Other first")
+        .specializationField(TN)
+        .birthDate(LocalDate.parse("2000-01-03"));
   }
 
   public static CrupdateStudent someCreatableStudent() {
@@ -277,61 +277,61 @@ public class StudentIT extends MockedThirdParties {
 
   public static Student disabledStudent1() {
     return new Student()
-            .id("student4_id")
-            .firstName("Disable")
-            .lastName("One")
-            .email("test+disable1@hei.school")
-            .ref("STD29001")
-            .status(EnableStatus.DISABLED)
-            .sex(M)
-            .birthDate(LocalDate.parse("2000-12-01"))
-            .entranceDatetime(Instant.parse("2021-11-08T08:25:24.00Z"))
-            .phone("0322411123")
-            .specializationField(COMMON_CORE)
-            .nic("")
-            .birthPlace("")
-            .coordinates(coordinatesWithNullValues())
-            .workStudyStatus(NOT_WORKING)
-            .address("Adr 1")
-            .groups(List.of())
-            .isRepeatingYear(false);
+        .id("student4_id")
+        .firstName("Disable")
+        .lastName("One")
+        .email("test+disable1@hei.school")
+        .ref("STD29001")
+        .status(EnableStatus.DISABLED)
+        .sex(M)
+        .birthDate(LocalDate.parse("2000-12-01"))
+        .entranceDatetime(Instant.parse("2021-11-08T08:25:24.00Z"))
+        .phone("0322411123")
+        .specializationField(COMMON_CORE)
+        .nic("")
+        .birthPlace("")
+        .coordinates(coordinatesWithNullValues())
+        .workStudyStatus(NOT_WORKING)
+        .address("Adr 1")
+        .groups(List.of())
+        .isRepeatingYear(false);
   }
 
   public static CrupdateStudent creatableSuspendedStudent() {
     return new CrupdateStudent()
-            .firstName("Suspended")
-            .lastName("Two")
-            .email("test+suspended2@hei.school")
-            .ref("STD29004")
-            .status(SUSPENDED)
-            .sex(F)
-            .birthDate(LocalDate.parse("2000-12-02"))
-            .entranceDatetime(Instant.parse("2021-11-09T08:26:24.00Z"))
-            .phone("0322411124")
-            .address("Adr 3")
-            .coordinates(coordinatesWithNullValues());
+        .firstName("Suspended")
+        .lastName("Two")
+        .email("test+suspended2@hei.school")
+        .ref("STD29004")
+        .status(SUSPENDED)
+        .sex(F)
+        .birthDate(LocalDate.parse("2000-12-02"))
+        .entranceDatetime(Instant.parse("2021-11-09T08:26:24.00Z"))
+        .phone("0322411124")
+        .address("Adr 3")
+        .coordinates(coordinatesWithNullValues());
   }
 
   public static Student suspendedStudent1() {
     return new Student()
-            .id("student6_id")
-            .firstName("Suspended")
-            .lastName("One")
-            .email("test+suspended@hei.school")
-            .ref("STD29003")
-            .status(SUSPENDED)
-            .sex(F)
-            .birthDate(LocalDate.parse("2000-12-02"))
-            .entranceDatetime(Instant.parse("2021-11-09T08:26:24.00Z"))
-            .phone("0322411124")
-            .nic("")
-            .specializationField(COMMON_CORE)
-            .birthPlace("")
-            .address("Adr 2")
-            .workStudyStatus(NOT_WORKING)
-            .coordinates(coordinatesWithNullValues())
-            .groups(List.of())
-            .isRepeatingYear(false);
+        .id("student6_id")
+        .firstName("Suspended")
+        .lastName("One")
+        .email("test+suspended@hei.school")
+        .ref("STD29003")
+        .status(SUSPENDED)
+        .sex(F)
+        .birthDate(LocalDate.parse("2000-12-02"))
+        .entranceDatetime(Instant.parse("2021-11-09T08:26:24.00Z"))
+        .phone("0322411124")
+        .nic("")
+        .specializationField(COMMON_CORE)
+        .birthPlace("")
+        .address("Adr 2")
+        .workStudyStatus(NOT_WORKING)
+        .coordinates(coordinatesWithNullValues())
+        .groups(List.of())
+        .isRepeatingYear(false);
   }
 
   public static Student repeatingStudent1() {
@@ -342,46 +342,46 @@ public class StudentIT extends MockedThirdParties {
     copyGroup3.setName(group3().getName());
     copyGroup3.setSize(1);
     return new Student()
-            .id("student7_id")
-            .firstName("Repeating")
-            .lastName("One")
-            .email("test+repeating1@hei.school")
-            .ref("STD22090")
-            .status(ENABLED)
-            .sex(M)
-            .birthDate(LocalDate.parse("2000-12-01"))
-            .entranceDatetime(Instant.parse("2021-11-08T08:25:24.00Z"))
-            .phone("0322411190")
-            .nic("")
-            .specializationField(COMMON_CORE)
-            .birthPlace("")
-            .address("Adr 1")
-            .workStudyStatus(NOT_WORKING)
-            .coordinates(coordinatesWithNullValues())
-            .groups(List.of(updatedGroup3()))
-            .isRepeatingYear(Boolean.TRUE);
+        .id("student7_id")
+        .firstName("Repeating")
+        .lastName("One")
+        .email("test+repeating1@hei.school")
+        .ref("STD22090")
+        .status(ENABLED)
+        .sex(M)
+        .birthDate(LocalDate.parse("2000-12-01"))
+        .entranceDatetime(Instant.parse("2021-11-08T08:25:24.00Z"))
+        .phone("0322411190")
+        .nic("")
+        .specializationField(COMMON_CORE)
+        .birthPlace("")
+        .address("Adr 1")
+        .workStudyStatus(NOT_WORKING)
+        .coordinates(coordinatesWithNullValues())
+        .groups(List.of(updatedGroup3()))
+        .isRepeatingYear(Boolean.TRUE);
   }
 
   public static Student repeatingStudent2() {
     return new Student()
-            .id("student8_id")
-            .firstName("Repeating")
-            .lastName("Two")
-            .email("test+repeating2@hei.school")
-            .ref("STD23090")
-            .status(ENABLED)
-            .sex(F)
-            .birthDate(LocalDate.parse("2000-12-02"))
-            .entranceDatetime(Instant.parse("2022-11-09T08:26:24.00Z"))
-            .phone("0322411191")
-            .nic("")
-            .specializationField(COMMON_CORE)
-            .birthPlace("")
-            .address("Adr 2")
-            .workStudyStatus(NOT_WORKING)
-            .coordinates(coordinatesWithNullValues())
-            .groups(List.of(updatedGroup5()))
-            .isRepeatingYear(Boolean.TRUE);
+        .id("student8_id")
+        .firstName("Repeating")
+        .lastName("Two")
+        .email("test+repeating2@hei.school")
+        .ref("STD23090")
+        .status(ENABLED)
+        .sex(F)
+        .birthDate(LocalDate.parse("2000-12-02"))
+        .entranceDatetime(Instant.parse("2022-11-09T08:26:24.00Z"))
+        .phone("0322411191")
+        .nic("")
+        .specializationField(COMMON_CORE)
+        .birthPlace("")
+        .address("Adr 2")
+        .workStudyStatus(NOT_WORKING)
+        .coordinates(coordinatesWithNullValues())
+        .groups(List.of(updatedGroup5()))
+        .isRepeatingYear(Boolean.TRUE);
   }
 
   @BeforeEach
@@ -398,13 +398,13 @@ public class StudentIT extends MockedThirdParties {
     String basePath = "http://localhost:" + SERVER_PORT;
 
     HttpResponse response =
-            httpClient.send(
-                    HttpRequest.newBuilder()
-                            .uri(URI.create(basePath + STUDENTS_GROUP))
-                            .GET()
-                            .header("Authorization", "Bearer " + MANAGER1_TOKEN)
-                            .build(),
-                    HttpResponse.BodyHandlers.ofByteArray());
+        httpClient.send(
+            HttpRequest.newBuilder()
+                .uri(URI.create(basePath + STUDENTS_GROUP))
+                .GET()
+                .header("Authorization", "Bearer " + MANAGER1_TOKEN)
+                .build(),
+            HttpResponse.BodyHandlers.ofByteArray());
 
     Assert.assertEquals(HttpStatus.OK.value(), response.statusCode());
     assertNotNull(response.body());
@@ -428,7 +428,7 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(1, 10, null, null, null, null, null, null, null, null, null);
+        api.getStudents(1, 10, null, null, null, null, null, null, null, null, null);
 
     assertTrue(actualStudents.containsAll(List.of(repeatingStudent2(), repeatingStudent1())));
   }
@@ -437,7 +437,7 @@ public class StudentIT extends MockedThirdParties {
   void manager_upload_profile_picture() throws IOException, InterruptedException {
 
     HttpResponse<InputStream> response =
-            uploadProfilePicture(SERVER_PORT, MANAGER1_TOKEN, STUDENT1_ID, "students");
+        uploadProfilePicture(SERVER_PORT, MANAGER1_TOKEN, STUDENT1_ID, "students");
 
     Student student = objectMapper.readValue(response.body(), Student.class);
 
@@ -447,22 +447,22 @@ public class StudentIT extends MockedThirdParties {
 
   @Test
   @Disabled
-    // TODO: Same here
+  // TODO: Same here
   void student_update_other_profile_picture_ko() throws ApiException {
     ApiClient student1Client = anApiClient(STUDENT1_TOKEN);
     UsersApi api = new UsersApi(student1Client);
     assertThrowsForbiddenException(
-            () -> api.uploadStudentProfilePicture(STUDENT3_ID, getMockedFile("img", ".png")));
+        () -> api.uploadStudentProfilePicture(STUDENT3_ID, getMockedFile("img", ".png")));
   }
 
   @Test
   @Disabled
-    // TODO: Check why this returns null while a Forbidden Exception is thrown
+  // TODO: Check why this returns null while a Forbidden Exception is thrown
   void student_update_own_ko() throws ApiException {
     ApiClient student1Client = anApiClient(STUDENT1_TOKEN);
     UsersApi api = new UsersApi(student1Client);
     assertThrowsForbiddenException(
-            () -> api.uploadStudentProfilePicture(STUDENT1_ID, getMockedFile("img", ".png")));
+        () -> api.uploadStudentProfilePicture(STUDENT1_ID, getMockedFile("img", ".png")));
   }
 
   @Test
@@ -483,7 +483,7 @@ public class StudentIT extends MockedThirdParties {
     assertThrowsForbiddenException(() -> api.getStudentById(TestUtils.STUDENT2_ID));
 
     assertThrowsForbiddenException(
-            () -> api.getStudents(1, 20, null, null, null, null, null, null, null, null, null));
+        () -> api.getStudents(1, 20, null, null, null, null, null, null, null, null, null));
   }
 
   @Test
@@ -493,7 +493,7 @@ public class StudentIT extends MockedThirdParties {
     Student actualStudent1 = api.getStudentById(STUDENT1_ID);
 
     List<Student> actualStudents =
-            api.getStudents(1, 20, null, null, null, null, null, null, null, null, null);
+        api.getStudents(1, 20, null, null, null, null, null, null, null, null, null);
 
     assertEquals(student1(), actualStudent1);
     assertTrue(actualStudents.contains(student1()));
@@ -506,8 +506,8 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(
-                    1, 10, null, null, null, null, EnableStatus.DISABLED, null, null, null, null);
+        api.getStudents(
+            1, 10, null, null, null, null, EnableStatus.DISABLED, null, null, null, null);
     assertEquals(2, actualStudents.size());
     assertTrue(actualStudents.contains(disabledStudent1()));
   }
@@ -518,7 +518,7 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(1, 10, null, null, null, null, SUSPENDED, null, null, null, null);
+        api.getStudents(1, 10, null, null, null, null, SUSPENDED, null, null, null, null);
     assertEquals(1, actualStudents.size());
     assertTrue(actualStudents.contains(suspendedStudent1()));
   }
@@ -529,7 +529,7 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(1, 10, null, null, null, null, null, null, WORKING, null, null);
+        api.getStudents(1, 10, null, null, null, null, null, null, WORKING, null, null);
 
     assertEquals(2, actualStudents.size());
     assertTrue(actualStudents.containsAll(List.of(student2(), student1())));
@@ -541,7 +541,7 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(1, 10, null, null, null, null, EnableStatus.DISABLED, F, null, null, null);
+        api.getStudents(1, 10, null, null, null, null, EnableStatus.DISABLED, F, null, null, null);
     assertEquals(1, actualStudents.size());
   }
 
@@ -567,7 +567,7 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(1, 20, null, null, null, null, null, null, null, null, null);
+        api.getStudents(1, 20, null, null, null, null, null, null, null, null, null);
 
     assertTrue(actualStudents.contains(student1()));
     assertTrue(actualStudents.contains(student2()));
@@ -580,22 +580,22 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(
-                    1,
-                    20,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    Instant.parse("2021-11-08T08:25:24Z"),
-                    null);
+        api.getStudents(
+            1,
+            20,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            Instant.parse("2021-11-08T08:25:24Z"),
+            null);
 
     assertEquals(2, actualStudents.size());
     assertEquals(
-            student1().getCommitmentBeginDate(), actualStudents.get(0).getCommitmentBeginDate());
+        student1().getCommitmentBeginDate(), actualStudents.get(0).getCommitmentBeginDate());
   }
 
   @Test
@@ -604,18 +604,18 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(
-                    1,
-                    20,
-                    student1().getRef(),
-                    student1().getFirstName(),
-                    student1().getLastName(),
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null);
+        api.getStudents(
+            1,
+            20,
+            student1().getRef(),
+            student1().getFirstName(),
+            student1().getLastName(),
+            null,
+            null,
+            null,
+            null,
+            null,
+            null);
 
     assertEquals(1, actualStudents.size());
     assertTrue(actualStudents.contains(student1()));
@@ -627,7 +627,7 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(1, 20, "std21001", null, null, null, null, null, null, null, null);
+        api.getStudents(1, 20, "std21001", null, null, null, null, null, null, null, null);
 
     assertEquals("STD21001", student1().getRef());
     assertEquals(1, actualStudents.size());
@@ -640,7 +640,7 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(1, 20, student1().getRef(), null, null, null, null, null, null, null, null);
+        api.getStudents(1, 20, student1().getRef(), null, null, null, null, null, null, null, null);
 
     assertEquals(1, actualStudents.size());
     assertTrue(actualStudents.contains(student1()));
@@ -652,8 +652,8 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(
-                    1, 20, null, null, student2().getLastName(), null, null, null, null, null, null);
+        api.getStudents(
+            1, 20, null, null, student2().getLastName(), null, null, null, null, null, null);
 
     assertEquals(2, actualStudents.size());
     assertTrue(actualStudents.contains(student2()));
@@ -666,18 +666,18 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(
-                    1,
-                    20,
-                    student2().getRef(),
-                    null,
-                    student2().getLastName(),
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null);
+        api.getStudents(
+            1,
+            20,
+            student2().getRef(),
+            null,
+            student2().getLastName(),
+            null,
+            null,
+            null,
+            null,
+            null,
+            null);
 
     assertEquals(1, actualStudents.size());
     assertTrue(actualStudents.contains(student2()));
@@ -689,18 +689,18 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actualStudents =
-            api.getStudents(
-                    1,
-                    20,
-                    student2().getRef(),
-                    null,
-                    student1().getLastName(),
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null);
+        api.getStudents(
+            1,
+            20,
+            student2().getRef(),
+            null,
+            student1().getLastName(),
+            null,
+            null,
+            null,
+            null,
+            null,
+            null);
 
     assertEquals(0, actualStudents.size());
     assertFalse(actualStudents.contains(student1()));
@@ -711,7 +711,7 @@ public class StudentIT extends MockedThirdParties {
     ApiClient monitorClient = anApiClient(MONITOR1_TOKEN);
     UsersApi api = new UsersApi(monitorClient);
     List<Student> actual =
-            api.getStudents(1, 20, null, null, null, null, null, null, null, null, null);
+        api.getStudents(1, 20, null, null, null, null, null, null, null, null, null);
 
     assertTrue(actual.contains(student1()));
     assertTrue(actual.contains(student2()));
@@ -722,89 +722,89 @@ public class StudentIT extends MockedThirdParties {
     ApiClient manager1Client = anApiClient(MANAGER1_TOKEN);
     UsersApi api = new UsersApi(manager1Client);
     List<Student> toCreate =
-            api.createOrUpdateStudents(List.of(someCreatableStudent(), someCreatableStudent()), null);
+        api.createOrUpdateStudents(List.of(someCreatableStudent(), someCreatableStudent()), null);
 
     Student created0 = toCreate.get(0);
     CrupdateStudent toUpdate0 =
-            new CrupdateStudent()
-                    .birthDate(created0.getBirthDate())
-                    .id(created0.getId())
-                    .entranceDatetime(created0.getEntranceDatetime())
-                    .phone(created0.getPhone())
-                    .nic(created0.getNic())
-                    .birthPlace(created0.getBirthPlace())
-                    .email(created0.getEmail())
-                    .address(created0.getAddress())
-                    .firstName(created0.getFirstName())
-                    .lastName(created0.getLastName())
-                    .sex(created0.getSex())
-                    .ref(created0.getRef())
-                    .coordinates(coordinatesWithNullValues())
-                    .specializationField(created0.getSpecializationField())
-                    .status(created0.getStatus());
+        new CrupdateStudent()
+            .birthDate(created0.getBirthDate())
+            .id(created0.getId())
+            .entranceDatetime(created0.getEntranceDatetime())
+            .phone(created0.getPhone())
+            .nic(created0.getNic())
+            .birthPlace(created0.getBirthPlace())
+            .email(created0.getEmail())
+            .address(created0.getAddress())
+            .firstName(created0.getFirstName())
+            .lastName(created0.getLastName())
+            .sex(created0.getSex())
+            .ref(created0.getRef())
+            .coordinates(coordinatesWithNullValues())
+            .specializationField(created0.getSpecializationField())
+            .status(created0.getStatus());
     toUpdate0.setLastName("A new name zero");
 
     Student created1 = toCreate.get(1);
     CrupdateStudent toUpdate1 =
-            new CrupdateStudent()
-                    .birthDate(created1.getBirthDate())
-                    .id(created1.getId())
-                    .entranceDatetime(created1.getEntranceDatetime())
-                    .phone(created1.getPhone())
-                    .nic(created1.getNic())
-                    .birthPlace(created1.getBirthPlace())
-                    .email(created1.getEmail())
-                    .address(created1.getAddress())
-                    .firstName(created1.getFirstName())
-                    .lastName(created1.getLastName())
-                    .sex(created1.getSex())
-                    .ref(created1.getRef())
-                    .coordinates(coordinatesWithNullValues())
-                    .specializationField(created1.getSpecializationField())
-                    .status(created1.getStatus());
+        new CrupdateStudent()
+            .birthDate(created1.getBirthDate())
+            .id(created1.getId())
+            .entranceDatetime(created1.getEntranceDatetime())
+            .phone(created1.getPhone())
+            .nic(created1.getNic())
+            .birthPlace(created1.getBirthPlace())
+            .email(created1.getEmail())
+            .address(created1.getAddress())
+            .firstName(created1.getFirstName())
+            .lastName(created1.getLastName())
+            .sex(created1.getSex())
+            .ref(created1.getRef())
+            .coordinates(coordinatesWithNullValues())
+            .specializationField(created1.getSpecializationField())
+            .status(created1.getStatus());
     toUpdate1.setLastName("A new name one");
 
     Student updated0 =
-            new Student()
-                    .birthDate(toUpdate0.getBirthDate())
-                    .id(toUpdate0.getId())
-                    .entranceDatetime(toUpdate0.getEntranceDatetime())
-                    .phone(toUpdate0.getPhone())
-                    .nic(toUpdate0.getNic())
-                    .birthPlace(toUpdate0.getBirthPlace())
-                    .email(toUpdate0.getEmail())
-                    .address(toUpdate0.getAddress())
-                    .firstName(toUpdate0.getFirstName())
-                    .lastName("A new name zero")
-                    .sex(toUpdate0.getSex())
-                    .ref(toUpdate0.getRef())
-                    .coordinates(coordinatesWithNullValues())
-                    .specializationField(toUpdate0.getSpecializationField())
-                    .workStudyStatus(NOT_WORKING)
-                    .status(toUpdate0.getStatus())
-                    .groups(List.of())
-                    .isRepeatingYear(false);
+        new Student()
+            .birthDate(toUpdate0.getBirthDate())
+            .id(toUpdate0.getId())
+            .entranceDatetime(toUpdate0.getEntranceDatetime())
+            .phone(toUpdate0.getPhone())
+            .nic(toUpdate0.getNic())
+            .birthPlace(toUpdate0.getBirthPlace())
+            .email(toUpdate0.getEmail())
+            .address(toUpdate0.getAddress())
+            .firstName(toUpdate0.getFirstName())
+            .lastName("A new name zero")
+            .sex(toUpdate0.getSex())
+            .ref(toUpdate0.getRef())
+            .coordinates(coordinatesWithNullValues())
+            .specializationField(toUpdate0.getSpecializationField())
+            .workStudyStatus(NOT_WORKING)
+            .status(toUpdate0.getStatus())
+            .groups(List.of())
+            .isRepeatingYear(false);
 
     Student updated1 =
-            new Student()
-                    .birthDate(toUpdate1.getBirthDate())
-                    .id(toUpdate1.getId())
-                    .entranceDatetime(toUpdate1.getEntranceDatetime())
-                    .phone(toUpdate1.getPhone())
-                    .nic(toUpdate1.getNic())
-                    .birthPlace(toUpdate1.getBirthPlace())
-                    .email(toUpdate1.getEmail())
-                    .address(toUpdate1.getAddress())
-                    .firstName(toUpdate1.getFirstName())
-                    .lastName("A new name one")
-                    .sex(toUpdate1.getSex())
-                    .ref(toUpdate1.getRef())
-                    .specializationField(toUpdate1.getSpecializationField())
-                    .coordinates(coordinatesWithNullValues())
-                    .workStudyStatus(NOT_WORKING)
-                    .status(toUpdate1.getStatus())
-                    .groups(List.of())
-                    .isRepeatingYear(false);
+        new Student()
+            .birthDate(toUpdate1.getBirthDate())
+            .id(toUpdate1.getId())
+            .entranceDatetime(toUpdate1.getEntranceDatetime())
+            .phone(toUpdate1.getPhone())
+            .nic(toUpdate1.getNic())
+            .birthPlace(toUpdate1.getBirthPlace())
+            .email(toUpdate1.getEmail())
+            .address(toUpdate1.getAddress())
+            .firstName(toUpdate1.getFirstName())
+            .lastName("A new name one")
+            .sex(toUpdate1.getSex())
+            .ref(toUpdate1.getRef())
+            .specializationField(toUpdate1.getSpecializationField())
+            .coordinates(coordinatesWithNullValues())
+            .workStudyStatus(NOT_WORKING)
+            .status(toUpdate1.getStatus())
+            .groups(List.of())
+            .isRepeatingYear(false);
 
     List<Student> updated = api.createOrUpdateStudents(List.of(toUpdate0, toUpdate1), null);
 
@@ -819,8 +819,8 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> students =
-            api.getStudents(
-                    1, 10, null, null, null, null, null, null, null, null, List.of("group1_id"));
+        api.getStudents(
+            1, 10, null, null, null, null, null, null, null, null, List.of("group1_id"));
 
     assertTrue(students.contains(student3()));
     assertFalse(students.contains(student1()));
@@ -834,14 +834,14 @@ public class StudentIT extends MockedThirdParties {
     CrupdateStudent toCreate = someCreatableStudent();
     reset(eventBridgeClientMock);
     when(eventBridgeClientMock.putEvents((PutEventsRequest) any()))
-            .thenThrow(RuntimeException.class);
+        .thenThrow(RuntimeException.class);
 
     assertThrowsApiException(
-            "{\"type\":\"500 INTERNAL_SERVER_ERROR\",\"message\":null}",
-            () -> api.createOrUpdateStudents(List.of(toCreate), null));
+        "{\"type\":\"500 INTERNAL_SERVER_ERROR\",\"message\":null}",
+        () -> api.createOrUpdateStudents(List.of(toCreate), null));
 
     List<Student> actual =
-            api.getStudents(1, 100, null, null, null, null, null, null, null, null, null);
+        api.getStudents(1, 100, null, null, null, null, null, null, null, null, null);
     assertFalse(actual.stream().anyMatch(s -> Objects.equals(toCreate.getEmail(), s.getEmail())));
   }
 
@@ -855,13 +855,13 @@ public class StudentIT extends MockedThirdParties {
     listToCreate.add(studentToCreate);
 
     assertThrowsApiException(
-            "{\"type\":\"500 INTERNAL_SERVER_ERROR\",\"message\":\"Request entries must be <= 10\"}",
-            () -> api.createOrUpdateStudents(listToCreate, null));
+        "{\"type\":\"500 INTERNAL_SERVER_ERROR\",\"message\":\"Request entries must be <= 10\"}",
+        () -> api.createOrUpdateStudents(listToCreate, null));
 
     List<Student> actual =
-            api.getStudents(1, 100, null, null, null, null, null, null, null, null, null);
+        api.getStudents(1, 100, null, null, null, null, null, null, null, null, null);
     assertFalse(
-            actual.stream().anyMatch(s -> Objects.equals(studentToCreate.getEmail(), s.getEmail())));
+        actual.stream().anyMatch(s -> Objects.equals(studentToCreate.getEmail(), s.getEmail())));
   }
 
   @Test
@@ -870,14 +870,14 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     assertThrowsApiException(
-            "{\"type\":\"400 BAD_REQUEST\",\"message\":\"Longitude is null, it must go hand in hand"
-                    + " with latitude\"}",
-            () ->
-                    api.createOrUpdateStudents(
-                            List.of(
-                                    someCreatableStudent()
-                                            .coordinates(new Coordinates().longitude(null).latitude(12.0))),
-                            null));
+        "{\"type\":\"400 BAD_REQUEST\",\"message\":\"Longitude is null, it must go hand in hand"
+            + " with latitude\"}",
+        () ->
+            api.createOrUpdateStudents(
+                List.of(
+                    someCreatableStudent()
+                        .coordinates(new Coordinates().longitude(null).latitude(12.0))),
+                null));
   }
 
   @Test
@@ -886,14 +886,14 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     assertThrowsApiException(
-            "{\"type\":\"400 BAD_REQUEST\",\"message\":\"Latitude is null, it must go hand in hand with"
-                    + " longitude\"}",
-            () ->
-                    api.createOrUpdateStudents(
-                            List.of(
-                                    someCreatableStudent()
-                                            .coordinates(new Coordinates().longitude(12.0).latitude(null))),
-                            null));
+        "{\"type\":\"400 BAD_REQUEST\",\"message\":\"Latitude is null, it must go hand in hand with"
+            + " longitude\"}",
+        () ->
+            api.createOrUpdateStudents(
+                List.of(
+                    someCreatableStudent()
+                        .coordinates(new Coordinates().longitude(12.0).latitude(null))),
+                null));
   }
 
   @Test
@@ -902,15 +902,15 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
     reset(eventBridgeClientMock);
     when(eventBridgeClientMock.putEvents((PutEventsRequest) any()))
-            .thenReturn(
-                    PutEventsResponse.builder()
-                            .entries(
-                                    PutEventsResultEntry.builder().eventId("eventId1").build(),
-                                    PutEventsResultEntry.builder().eventId("eventId2").build())
-                            .build());
+        .thenReturn(
+            PutEventsResponse.builder()
+                .entries(
+                    PutEventsResultEntry.builder().eventId("eventId1").build(),
+                    PutEventsResultEntry.builder().eventId("eventId2").build())
+                .build());
 
     List<Student> created =
-            api.createOrUpdateStudents(List.of(someCreatableStudent(), someCreatableStudent()), null);
+        api.createOrUpdateStudents(List.of(someCreatableStudent(), someCreatableStudent()), null);
 
     ArgumentCaptor<PutEventsRequest> captor = ArgumentCaptor.forClass(PutEventsRequest.class);
     verify(eventBridgeClientMock, times(1)).putEvents(captor.capture());
@@ -960,18 +960,18 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actual =
-            api.getStudents(
-                    1,
-                    10,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    Instant.parse("2021-11-08T08:25:24.00Z"),
-                    null);
+        api.getStudents(
+            1,
+            10,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            Instant.parse("2021-11-08T08:25:24.00Z"),
+            null);
 
     assertEquals(2, actual.size());
     assertTrue(actual.containsAll(List.of(student1(), student2())));
@@ -986,7 +986,7 @@ public class StudentIT extends MockedThirdParties {
     List<Student> actual = api.createOrUpdateStudents(List.of(creatableSuspendedStudent()), null);
     Student created = actual.get(0);
     List<Student> suspended =
-            api.getStudents(1, 10, null, "Suspended", null, null, SUSPENDED, null, null, null, null);
+        api.getStudents(1, 10, null, "Suspended", null, null, SUSPENDED, null, null, null, null);
 
     assertTrue(suspended.contains(created));
     assertEquals(1, actual.size());
@@ -999,10 +999,10 @@ public class StudentIT extends MockedThirdParties {
     UsersApi api = new UsersApi(manager1Client);
 
     List<Student> actual =
-            api.createOrUpdateStudents(List.of(createStudent2().status(SUSPENDED)), null);
+        api.createOrUpdateStudents(List.of(createStudent2().status(SUSPENDED)), null);
     Student updated = actual.get(0);
     List<Student> suspended =
-            api.getStudents(1, 10, null, null, null, null, SUSPENDED, null, null, null, null);
+        api.getStudents(1, 10, null, null, null, null, SUSPENDED, null, null, null, null);
 
     assertTrue(suspended.contains(updated));
     assertEquals(1, actual.size());
@@ -1014,11 +1014,11 @@ public class StudentIT extends MockedThirdParties {
     UsersApi usersApi = new UsersApi(manager1Client);
 
     Integer women =
-            usersApi.getStudents(1, 200, null, null, null, null, null, F, null, null, null).size();
+        usersApi.getStudents(1, 200, null, null, null, null, null, F, null, null, null).size();
     Integer men =
-            usersApi.getStudents(1, 200, null, null, null, null, null, M, null, null, null).size();
+        usersApi.getStudents(1, 200, null, null, null, null, null, M, null, null, null).size();
     Integer totalStudents =
-            usersApi.getStudents(1, 200, null, null, null, null, null, null, null, null, null).size();
+        usersApi.getStudents(1, 200, null, null, null, null, null, null, null, null, null).size();
 
     Statistics statistics = usersApi.getStats();
     assertEquals(statistics.getWomen().getTotal(), women);
@@ -1042,24 +1042,24 @@ public class StudentIT extends MockedThirdParties {
     creatableStudent3.setPaymentFrequency(null);
 
     List<Student> studentsCreated =
-            usersApi.createOrUpdateStudents(
-                    List.of(creatableStudent1, creatableStudent2, creatableStudent3), DUE_DATETIME);
+        usersApi.createOrUpdateStudents(
+            List.of(creatableStudent1, creatableStudent2, creatableStudent3), DUE_DATETIME);
 
     Student student1 =
-            usersApi
-                    .getStudents(
-                            1, 15, creatableStudent1.getRef(), null, null, null, null, null, null, null, null)
-                    .getFirst();
+        usersApi
+            .getStudents(
+                1, 15, creatableStudent1.getRef(), null, null, null, null, null, null, null, null)
+            .getFirst();
     Student student2 =
-            usersApi
-                    .getStudents(
-                            1, 15, creatableStudent2.getRef(), null, null, null, null, null, null, null, null)
-                    .getFirst();
+        usersApi
+            .getStudents(
+                1, 15, creatableStudent2.getRef(), null, null, null, null, null, null, null, null)
+            .getFirst();
     Student student3 =
-            usersApi
-                    .getStudents(
-                            1, 15, creatableStudent3.getRef(), null, null, null, null, null, null, null, null)
-                    .getFirst();
+        usersApi
+            .getStudents(
+                1, 15, creatableStudent3.getRef(), null, null, null, null, null, null, null, null)
+            .getFirst();
 
     assertTrue(studentsCreated.containsAll(List.of(student1, student2, student3)));
 
@@ -1097,65 +1097,65 @@ public class StudentIT extends MockedThirdParties {
     assertEquals(student1(), actualGroupStudentsByRef.getFirst());
 
     List<Student> actualGroupStudentsByFirstName =
-            api.getStudentsByGroupId(GROUP1_ID, 1, 10, "ryan");
+        api.getStudentsByGroupId(GROUP1_ID, 1, 10, "ryan");
     assertEquals(1, actualGroupStudentsByFirstName.size());
     assertEquals(student1(), actualGroupStudentsByFirstName.getFirst());
   }
 
   private Student toStudent(CrupdateStudent crupdateStudent) {
     return new Student()
-            .id(crupdateStudent.getId())
-            .birthDate(crupdateStudent.getBirthDate())
-            .id(crupdateStudent.getId())
-            .entranceDatetime(crupdateStudent.getEntranceDatetime())
-            .phone(crupdateStudent.getPhone())
-            .nic(crupdateStudent.getNic())
-            .birthPlace(crupdateStudent.getBirthPlace())
-            .email(crupdateStudent.getEmail())
-            .address(crupdateStudent.getAddress())
-            .firstName(crupdateStudent.getFirstName())
-            .lastName(crupdateStudent.getLastName())
-            .sex(crupdateStudent.getSex())
-            .ref(crupdateStudent.getRef())
-            .specializationField(crupdateStudent.getSpecializationField())
-            .status(crupdateStudent.getStatus());
+        .id(crupdateStudent.getId())
+        .birthDate(crupdateStudent.getBirthDate())
+        .id(crupdateStudent.getId())
+        .entranceDatetime(crupdateStudent.getEntranceDatetime())
+        .phone(crupdateStudent.getPhone())
+        .nic(crupdateStudent.getNic())
+        .birthPlace(crupdateStudent.getBirthPlace())
+        .email(crupdateStudent.getEmail())
+        .address(crupdateStudent.getAddress())
+        .firstName(crupdateStudent.getFirstName())
+        .lastName(crupdateStudent.getLastName())
+        .sex(crupdateStudent.getSex())
+        .ref(crupdateStudent.getRef())
+        .specializationField(crupdateStudent.getSpecializationField())
+        .status(crupdateStudent.getStatus());
   }
 
   private CrupdateStudent toCrupdateStudent(Student student) {
     return new CrupdateStudent()
-            .id(student.getId())
-            .birthDate(student.getBirthDate())
-            .id(student.getId())
-            .entranceDatetime(student.getEntranceDatetime())
-            .phone(student.getPhone())
-            .nic(student.getNic())
-            .birthPlace(student.getBirthPlace())
-            .email(student.getEmail())
-            .address(student.getAddress())
-            .firstName(student.getFirstName())
-            .lastName(student.getLastName())
-            .sex(student.getSex())
-            .ref(student.getRef())
-            .specializationField(student.getSpecializationField())
-            .status(student.getStatus());
+        .id(student.getId())
+        .birthDate(student.getBirthDate())
+        .id(student.getId())
+        .entranceDatetime(student.getEntranceDatetime())
+        .phone(student.getPhone())
+        .nic(student.getNic())
+        .birthPlace(student.getBirthPlace())
+        .email(student.getEmail())
+        .address(student.getAddress())
+        .firstName(student.getFirstName())
+        .lastName(student.getLastName())
+        .sex(student.getSex())
+        .ref(student.getRef())
+        .specializationField(student.getSpecializationField())
+        .status(student.getStatus());
   }
 
   private Student randomizeStudentUpdatableValues(Student student) {
     return new Student()
-            .id(student.getId())
-            .entranceDatetime(student.getEntranceDatetime())
-            .status(student.getStatus())
-            .email(student.getEmail())
-            .ref(student.getRef())
-            .birthDate(LocalDate.parse("2000-12-05"))
-            .birthPlace(randomUUID().toString())
-            .nic(randomUUID().toString())
-            .phone(randomUUID().toString())
-            .sex(student.getSex() != null ? (student.getSex().equals(M) ? F : M) : null)
-            .address(randomUUID().toString())
-            .lastName(randomUUID().toString())
-            .firstName(randomUUID().toString())
-            .specializationField(student.getSpecializationField());
+        .id(student.getId())
+        .entranceDatetime(student.getEntranceDatetime())
+        .status(student.getStatus())
+        .email(student.getEmail())
+        .ref(student.getRef())
+        .birthDate(LocalDate.parse("2000-12-05"))
+        .birthPlace(randomUUID().toString())
+        .nic(randomUUID().toString())
+        .phone(randomUUID().toString())
+        .sex(student.getSex() != null ? (student.getSex().equals(M) ? F : M) : null)
+        .address(randomUUID().toString())
+        .lastName(randomUUID().toString())
+        .firstName(randomUUID().toString())
+        .specializationField(student.getSpecializationField());
   }
 
   static class ContextInitializer extends AbstractContextInitializer {
