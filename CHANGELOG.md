@@ -1,3 +1,17 @@
+# [1.76.0](https://github.com/hei-school/hei-admin-api/compare/v1.75.0...v1.76.0) (2024-11-08)
+
+
+### Bug Fixes
+
+* fetch only for enabled and suspended students  ([08ed33a](https://github.com/hei-school/hei-admin-api/commit/08ed33a1b9a1e3823e7442c8e2854b13927fb1db))
+
+
+### Features
+
+* filter exams and get exam by id ([834db9d](https://github.com/hei-school/hei-admin-api/commit/834db9d1fad3e57e3714585be9a1adeb3317a2f9))
+
+
+
 # [1.75.0](https://github.com/hei-school/hei-admin-api/compare/v1.70.0...v1.75.0) (2024-11-07)
 
 
@@ -97,21 +111,6 @@
 ### Features
 
 * modify request body in linking students to monitor endpoint ([0de28a1](https://github.com/hei-school/hei-admin-api/commit/0de28a13e4504ed49d764990c419666b136cb3a1))
-
-
-
-# [1.62.0](https://github.com/hei-school/hei-admin-api/compare/v1.61.0...v1.62.0) (2024-10-09)
-
-
-### Bug Fixes
-
-* more than one row error while fetching letter ([afe4c14](https://github.com/hei-school/hei-admin-api/commit/afe4c145fe86287ffe329c7072e1a5fd7a8bd338))
-
-
-### Features
-
-* **not implemented:** crupdate student fees ([598a7fd](https://github.com/hei-school/hei-admin-api/commit/598a7fd8803218e7a37f7c3be1e76c3eba29d1b5))
-* scheduled cron job to update student status  ([af972bd](https://github.com/hei-school/hei-admin-api/commit/af972bd3481ad3b24593ecbbb713dd4efb740870))
 
 
 
