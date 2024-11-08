@@ -1,7 +1,8 @@
 package school.hei.haapi.endpoint.rest.controller;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 
+import java.time.Instant;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,8 +41,28 @@ public class ExamController {
   @GetMapping("/exams")
   public List<ExamInfo> getAllExams(
       @RequestParam(value = "page", defaultValue = "1") PageFromOne page,
-      @RequestParam(value = "page_size", defaultValue = "15") BoundedPageSize pageSize) {
-    return examMapper.toDomainList(examService.getAllExams(page, pageSize));
+      @RequestParam(value = "page_size", defaultValue = "15") BoundedPageSize pageSize,
+      @RequestParam(value = "title", required = false) String title,
+      @RequestParam(value = "course_code", required = false) String courseCode,
+      @RequestParam(value = "group_ref", required = false) String groupRef,
+      @RequestParam(value = "examination_date_from", required = false) Instant examinationDateFrom,
+      @RequestParam(value = "examination_date_to", required = false) Instant examinationDateTo,
+      @RequestParam(value = "awarded_course_id", required = false) String awardedCourseId) {
+    return examMapper.toRestList(
+        examService.getAllExams(
+            page,
+            pageSize,
+            title,
+            courseCode,
+            groupRef,
+            examinationDateFrom,
+            examinationDateTo,
+            awardedCourseId));
+  }
+
+  @GetMapping("/exams/{id}")
+  public ExamInfo getExam(@PathVariable(name = "id") String id) {
+    return examMapper.toRest(examService.getExamById(id));
   }
 
   @PutMapping("/exams")
