@@ -963,6 +963,30 @@ paths:
           required: false
           schema:
             type: string
+        - name: course_code
+          in: query
+          required: false
+          example: PROG1
+          schema:
+            type: string
+        - name: group_ref
+          in: query
+          example: G1
+          required: false
+          schema:
+            type: string
+        - name: examination_date_from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: examination_date_to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date-time
         - name: page
           in: query
           schema:
@@ -1009,6 +1033,35 @@ paths:
       responses:
         '200':
           description: Exams infos without the students participated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExamInfo'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+  /exams/{id}:
+    get:
+      tags:
+        - Teaching
+      summary: Get exam by id
+      operationId: getExamOneExamById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A specific exam
           content:
             application/json:
               schema:
@@ -2065,6 +2118,37 @@ paths:
           $ref: '#/components/responses/429'
         '500':
           $ref: '#/components/responses/500'
+  /fees/raw:
+    get:
+      tags:
+        - Paying
+      summary: Generate fees list as xlsx
+      operationId: generateFeesListAsXlsx
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/FeeStatusEnum'
+      responses:
+        '200':
+          description: List of fees in a xlsx file
+          content:
+            application/xlsx:
+              schema:
+                type: string
+                format: byte
+                example: XLSX VERSION
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
   /fees:
     put:
       tags:
@@ -2393,10 +2477,10 @@ paths:
       description: |
         The payload has no `amount` field
         since a MPBS implicitly pays the remaining unpaid amount of the fee.
-        
+
         In case the amount paid by the student differs,
         then the (scheduled) verifications will fail and manual fix from a manager is required.
-        
+
         When the verification succeeds, and only then,
         a `Fee.Payment` object is automatically created to reflect the `Fee.Mbps`.
       operationId: createMpbs

@@ -1,29 +1,37 @@
-# [1.74.0](https://github.com/hei-school/hei-admin-api/compare/v1.70.0...v1.74.0) (2024-11-06)
+# [1.76.0](https://github.com/hei-school/hei-admin-api/compare/v1.75.0...v1.76.0) (2024-11-08)
+
+
+### Bug Fixes
+
+* fetch only for enabled and suspended students  ([08ed33a](https://github.com/hei-school/hei-admin-api/commit/08ed33a1b9a1e3823e7442c8e2854b13927fb1db))
+
+
+### Features
+
+* filter exams and get exam by id ([834db9d](https://github.com/hei-school/hei-admin-api/commit/834db9d1fad3e57e3714585be9a1adeb3317a2f9))
+
+
+
+# [1.75.0](https://github.com/hei-school/hei-admin-api/compare/v1.70.0...v1.75.0) (2024-11-07)
 
 
 ### Bug Fixes
 
 * course id null while creating an event ([b63feb9](https://github.com/hei-school/hei-admin-api/commit/b63feb901e6536788d61a34159fb8e5583e8b88b))
 * disbale test failing ([34eea1e](https://github.com/hei-school/hei-admin-api/commit/34eea1ec60f05f888926520bfca24643b4ca21bb))
-* exam response must be list  ([a10bdfe](https://github.com/hei-school/hei-admin-api/commit/a10bdfe591aae3aeb024df0c9601a63b664d4c75))
 * security conf for students promotin generation  ([3bb12a0](https://github.com/hei-school/hei-admin-api/commit/3bb12a0ff1a0680da6fe617e69ec3d65eb732a43))
-* update status after mpbs  ([bb62d2a](https://github.com/hei-school/hei-admin-api/commit/bb62d2ae8fecc663682af20c104e26cf0fe6618d))
-* user pagination and undo joining table before application  ([1809cf4](https://github.com/hei-school/hei-admin-api/commit/1809cf44ed5a0d6a00e655094c69021d213f64f3))
+* update status after mpbs  ([408676a](https://github.com/hei-school/hei-admin-api/commit/408676a1052341e6f38464a166b9931c7d9d50b1))
 * xlsx cell instant format  ([3a7276d](https://github.com/hei-school/hei-admin-api/commit/3a7276d97df5dcdce5cbfa5fdd4d98007f87df15))
 
 
 ### Features
 
-* disable group students for STUDENT role  ([2fc0ce9](https://github.com/hei-school/hei-admin-api/commit/2fc0ce974444da6a872e309170358c8fb3500a77))
-* event stats ([9d70878](https://github.com/hei-school/hei-admin-api/commit/9d70878583eb62123ab7b6022b93d75e5d2cbc28))
-* filter fee order by LATE, UNPAID, PAID  ([e78b990](https://github.com/hei-school/hei-admin-api/commit/e78b99079a3672e6bfbb3127433b06ccd4288cb6))
-* generate students group in xlsx  ([bcc0e7f](https://github.com/hei-school/hei-admin-api/commit/bcc0e7ffa64237005f1325a6e1dd450dccbaf944))
+* generate fees as xlsx  ([c124501](https://github.com/hei-school/hei-admin-api/commit/c124501336010598be3c802fd395aafd11942abf))
+* generate students group in xlsx ([6922fed](https://github.com/hei-school/hei-admin-api/commit/6922feddd8f07dd3b5aedac9b9476e09cea4a991))
 * generate students promotion in xlsx  ([ca7ef7e](https://github.com/hei-school/hei-admin-api/commit/ca7ef7ebcc478a18907d7184fbe0a28f7cfde393))
-* get monthly fee statistics and list monthly fees  ([e023a1b](https://github.com/hei-school/hei-admin-api/commit/e023a1b09659f194a1c9e0f22a25106bf4514579))
-* **not-implemented:** add endpoint specific for exams creation and retrieve ([82af95c](https://github.com/hei-school/hei-admin-api/commit/82af95c0d3dfa9c7ce37621c62de9c0eba20132a))
-* **not-implemented:** events stats ([d20244c](https://github.com/hei-school/hei-admin-api/commit/d20244c4fc23490fdb4ae40c4af944102fdd7213))
-* **not-implemented:** get monthy fees statistics  ([e851936](https://github.com/hei-school/hei-admin-api/commit/e85193642650b548bd6baa7616ed3bc3e555c922))
-* stats is available in event model ([ad77add](https://github.com/hei-school/hei-admin-api/commit/ad77addbfde083858507aa887402d657479ca71a))
+* **not-implemented:** add endpoint specific for exams creation and retrieve ([56063df](https://github.com/hei-school/hei-admin-api/commit/56063df42d44a2b9447afcd9e28b2a18df39bd6a))
+* **not-implemented:** get monthy fees statistics ([cff0772](https://github.com/hei-school/hei-admin-api/commit/cff07722f3364fcb839366b980a722e56956cceb))
+* stats is available in event model ([c489d9e](https://github.com/hei-school/hei-admin-api/commit/c489d9ed86d3358bbabccc553ba35bcbe441f20f))
 
 
 
@@ -104,19 +112,5 @@
 
 * modify request body in linking students to monitor endpoint ([0de28a1](https://github.com/hei-school/hei-admin-api/commit/0de28a13e4504ed49d764990c419666b136cb3a1))
 
-
-
-# [1.62.0](https://github.com/hei-school/hei-admin-api/compare/v1.61.0...v1.62.0) (2024-10-09)
-
-
-### Bug Fixes
-
-* more than one row error while fetching letter ([afe4c14](https://github.com/hei-school/hei-admin-api/commit/afe4c145fe86287ffe329c7072e1a5fd7a8bd338))
-
-
-### Features
-
-* **not implemented:** crupdate student fees ([598a7fd](https://github.com/hei-school/hei-admin-api/commit/598a7fd8803218e7a37f7c3be1e76c3eba29d1b5))
-* scheduled cron job to update student status  ([af972bd](https://github.com/hei-school/hei-admin-api/commit/af972bd3481ad3b24593ecbbb713dd4efb740870))
 
 

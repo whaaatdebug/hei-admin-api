@@ -116,6 +116,7 @@ public class SecurityConf {
                     antMatcher(GET, "/students"),
                     antMatcher(PUT, "/fees"),
                     antMatcher(GET, "/fees"),
+                    antMatcher(GET, "/fees/raw"),
                     antMatcher(GET, "/fees/stats"),
                     antMatcher(GET, "/fees/*"),
                     antMatcher(PUT, "/students/*/fees/*/mpbs"),
@@ -169,6 +170,7 @@ public class SecurityConf {
                     antMatcher(PUT, "/awarded_courses/*/exams"),
                     antMatcher(PUT, "/groups/*/awarded_courses/*/exams"),
                     antMatcher(GET, "/exams"),
+                    antMatcher(GET, "/exams/*"),
                     antMatcher(PUT, "/exams"),
                     antMatcher(GET, "/groups/*/students"),
                     antMatcher(GET, "/groups/*/students/raw"),
@@ -347,6 +349,8 @@ public class SecurityConf {
                     .hasRole(MANAGER.getRole())
                     .requestMatchers(GET, "/fees")
                     .hasAnyRole(MANAGER.getRole())
+                    .requestMatchers(GET, "/fees/raw")
+                    .hasRole(MANAGER.getRole())
                     .requestMatchers(GET, "/fees/stats")
                     .hasAnyRole(MANAGER.getRole())
                     .requestMatchers(new SelfMatcher(GET, "/students/*/fees/*/mpbs", "students"))
@@ -552,6 +556,8 @@ public class SecurityConf {
                     .requestMatchers(PUT, "/awarded_courses/*/exams")
                     .hasAnyRole(TEACHER.getRole(), MANAGER.getRole())
                     .requestMatchers(GET, "/exams")
+                    .hasAnyRole(TEACHER.getRole(), MANAGER.getRole())
+                    .requestMatchers(GET, "/exams/*")
                     .hasAnyRole(TEACHER.getRole(), MANAGER.getRole())
                     .requestMatchers(PUT, "/exams")
                     .hasAnyRole(TEACHER.getRole(), MANAGER.getRole())

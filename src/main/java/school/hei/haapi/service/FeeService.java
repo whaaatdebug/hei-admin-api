@@ -35,12 +35,12 @@ import school.hei.haapi.model.validator.UpdateFeeValidator;
 import school.hei.haapi.repository.FeeRepository;
 import school.hei.haapi.repository.dao.FeeDao;
 import school.hei.haapi.service.utils.DateUtils;
+import school.hei.haapi.service.utils.XlsxCellsGenerator;
 
 @Service
 @AllArgsConstructor
 @Slf4j
 public class FeeService {
-
   private static final FeeStatusEnum DEFAULT_STATUS = LATE;
   private final FeeRepository feeRepository;
   private final FeeValidator feeValidator;
@@ -51,6 +51,21 @@ public class FeeService {
   private final DateUtils dateUtils;
   private static final String MONTHLY_FEE_TEMPLATE_NAME = "Frais mensuel L1";
   private static final String YEARLY_FEE_TEMPLATE_NAME = "Frais annuel L1";
+
+  public byte[] generateFeesAsXlsx(FeeStatusEnum feeStatus) {
+    XlsxCellsGenerator<Fee> xlsxCellsGenerator = new XlsxCellsGenerator<>();
+    List<Fee> feeList = feeRepository.findAllByStatus(feeStatus);
+    return xlsxCellsGenerator.apply(
+        feeList,
+        List.of(
+            "student.ref",
+            "status",
+            "type",
+            "totalAmount",
+            "remainingAmount",
+            "comment",
+            "dueDatetime"));
+  }
 
   public Fee debitAmount(Fee toUpdate, int amountToDebit) {
     int remainingAmount = toUpdate.getRemainingAmount();
@@ -111,7 +126,8 @@ public class FeeService {
     Instant[] defaultRange = dateUtils.getDefaultMonthRange(monthFrom, monthTo);
     monthFrom = defaultRange[0];
     monthTo = defaultRange[1];
-    Object[] stats = feeRepository.getMonthlyFeeStatistics(monthFrom, monthTo).get(0);
+    List<User.Status> statuses = List.of(User.Status.ENABLED, User.Status.SUSPENDED);
+    Object[] stats = feeRepository.getMonthlyFeeStatistics(monthFrom, monthTo, statuses).get(0);
 
     return new FeesStatistics()
         .totalFees(toInt(stats[0]))
