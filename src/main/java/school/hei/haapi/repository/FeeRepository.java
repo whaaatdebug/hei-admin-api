@@ -2,7 +2,6 @@ package school.hei.haapi.repository;
 
 import java.time.Instant;
 import java.util.List;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -46,7 +45,7 @@ public interface FeeRepository extends JpaRepository<Fee, String> {
     FROM
         Fee f
     JOIN
-        User u ON f.student = u
+        User u ON f.student.id = u.id
     WHERE
         f.student.id = :studentId
     ORDER BY
@@ -54,10 +53,12 @@ public interface FeeRepository extends JpaRepository<Fee, String> {
         WHEN f.status = 'LATE' THEN 1
         WHEN f.status = 'UNPAID' THEN 2
         WHEN f.status = 'PAID' THEN 3
-      END,
-      f.dueDatetime DESC
-      """)
-  Page<Fee> getFeesByStudentId(String studentId, Pageable pageable);
+      END ASC,
+      f.dueDatetime DESC,
+      f.id
+    """)
+  List<Fee> findAllByStudentIdSortByStatusAndDueDatetimeDescAndId(
+      String studentId, Pageable pageable);
 
   @Query(
       """
