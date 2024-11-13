@@ -1,3 +1,12 @@
+# [1.77.0](https://github.com/hei-school/hei-admin-api/compare/v1.76.0...v1.77.0) (2024-11-13)
+
+
+### Features
+
+* implement grades resources ([e370dad](https://github.com/hei-school/hei-admin-api/commit/e370dad2ba64c22a85a849bcb1dee52b7a32973c))
+
+
+
 # [1.76.0](https://github.com/hei-school/hei-admin-api/compare/v1.75.0...v1.76.0) (2024-11-08)
 
 
@@ -102,15 +111,6 @@
 ### Features
 
 * manager crupdate student fee endpoint ([af5a204](https://github.com/hei-school/hei-admin-api/commit/af5a2049db4d6b7ea65f25f56f347d7b38d2c815))
-
-
-
-# [1.63.0](https://github.com/hei-school/hei-admin-api/compare/v1.62.0...v1.63.0) (2024-10-11)
-
-
-### Features
-
-* modify request body in linking students to monitor endpoint ([0de28a1](https://github.com/hei-school/hei-admin-api/commit/0de28a13e4504ed49d764990c419666b136cb3a1))
 
 
 
