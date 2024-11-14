@@ -55,7 +55,8 @@ public class FeeService {
         feeList,
         List.of(
             "student.ref",
-            "status",
+            "student.firstName",
+            "student.lastName",
             "type",
             "totalAmount",
             "remainingAmount",
