@@ -1,3 +1,12 @@
+## [1.77.1](https://github.com/hei-school/hei-admin-api/compare/v1.77.0...v1.77.1) (2024-11-14)
+
+
+### Bug Fixes
+
+* make mpbs idempotant ([27ab987](https://github.com/hei-school/hei-admin-api/commit/27ab98709d157a64578d47fa0ccd42e502410b1e))
+
+
+
 # [1.77.0](https://github.com/hei-school/hei-admin-api/compare/v1.76.0...v1.77.0) (2024-11-13)
 
 
@@ -102,15 +111,6 @@
 
 * change request body in monitor put endpoint ([37782c3](https://github.com/hei-school/hei-admin-api/commit/37782c305688ac4ac8dee765766f56e9da1b5b88))
 * **not-implemented:** generate xlsx file for students in promotion ([e439a83](https://github.com/hei-school/hei-admin-api/commit/e439a83ecc1500982ac0f6aeca91d971dbb36886))
-
-
-
-# [1.64.0](https://github.com/hei-school/hei-admin-api/compare/v1.63.0...v1.64.0) (2024-10-11)
-
-
-### Features
-
-* manager crupdate student fee endpoint ([af5a204](https://github.com/hei-school/hei-admin-api/commit/af5a2049db4d6b7ea65f25f56f347d7b38d2c815))
 
 
 
