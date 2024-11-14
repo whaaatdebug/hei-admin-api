@@ -57,7 +57,8 @@ public interface FeeRepository extends JpaRepository<Fee, String> {
       f.dueDatetime DESC,
       f.id
     """)
-  List<Fee> findAllByStudentIdSortByStatusAndDueDatetimeDescAndId(String studentId, Pageable pageable);
+  List<Fee> findAllByStudentIdSortByStatusAndDueDatetimeDescAndId(
+      String studentId, Pageable pageable);
 
   @Query(
       """
