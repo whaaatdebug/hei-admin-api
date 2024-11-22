@@ -1862,6 +1862,149 @@ paths:
           $ref: '#/components/responses/429'
         '500':
           $ref: '#/components/responses/500'
+  /staff_members:
+    get:
+      tags:
+        - Users
+      summary: Get all staff members
+      operationId: getStaffMembers
+      parameters:
+        - name: page
+          in: query
+          schema:
+            $ref: '#/components/schemas/Page'
+        - name: page_size
+          in: query
+          schema:
+            $ref: '#/components/schemas/PageSize'
+        - name: status
+          required: false
+          in: query
+          description: Filter staff members by status value return all by default
+          schema:
+            $ref: '#/components/schemas/EnableStatus'
+        - name: sex
+          required: false
+          in: query
+          description: Filter staff members by sex value return all by default
+          schema:
+            $ref: '#/components/schemas/Sex'
+      responses:
+        '200':
+          description: List of staff members, ordered by ref.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StaffMember'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    put:
+      tags:
+        - Users
+      summary: Create or update staff members
+      operationId: crupdateStaffMembers
+      requestBody:
+        description: staff members
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/StaffMember'
+      responses:
+        '200':
+          description: List of staff members, ordered by ref.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StaffMember'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+  /staff_members/{id}:
+    get:
+      tags:
+        - Users
+      summary: Get staff member by the given id
+      operationId: getStaffMemberById
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The staff member
+          content:
+            application/json:
+              schema:
+                 $ref: '#/components/schemas/StaffMember'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    put:
+      tags:
+        - Users
+      summary: Update staff member info
+      operationId: updateStaffMember
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: staff member
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StaffMember'
+      responses:
+        '200':
+          description: List of staff members, ordered by ref.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StaffMember'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
   /delay_penalty:
     get:
       tags:
@@ -5667,6 +5810,22 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Letter'
+    StaffMember:
+      allOf:
+        - $ref: '#/components/schemas/Teacher'
+      type: object
+      properties:
+        ending_service:
+          type: string
+          format: date-time
+        cnaps:
+          type: string
+        ostie:
+          type: string
+        function:
+          type: string
+        degree:
+          type: string
     Exception:
       type: object
       properties:
