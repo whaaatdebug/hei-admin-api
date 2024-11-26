@@ -1,3 +1,25 @@
+# [1.80.0](https://github.com/hei-school/hei-admin-api/compare/v1.79.0...v1.80.0) (2024-11-26)
+
+
+### Bug Fixes
+
+* overpaid fees by mpbs  ([0044dd1](https://github.com/hei-school/hei-admin-api/commit/0044dd1bc8d05d3974d97c71916a0c45f798a966))
+* revert  ([a4e2442](https://github.com/hei-school/hei-admin-api/commit/a4e24424211a888cabd97ce539f116ca90321e30))
+
+
+### Features
+
+* add admin role and update letter access ([17f792f](https://github.com/hei-school/hei-admin-api/commit/17f792f4033517d645659fb4312e43af59fe6400))
+* admin profile ([77c16d7](https://github.com/hei-school/hei-admin-api/commit/77c16d71807d469da531852fb636032c264d27a5))
+* **not-implemented:** staff member resources ([9042dad](https://github.com/hei-school/hei-admin-api/commit/9042dad655d557b214ec041eb1d60718b85c2815))
+
+
+### Reverts
+
+* move student file controller to user file controller ([738c681](https://github.com/hei-school/hei-admin-api/commit/738c681cbe253a64dbeed19ae3f5d9fb96e8949d))
+
+
+
 # [1.79.0](https://github.com/hei-school/hei-admin-api/compare/v1.78.0...v1.79.0) (2024-11-15)
 
 
@@ -105,15 +127,6 @@
 ### Features
 
 * **not-implemented:** link letter and event participant ([3522088](https://github.com/hei-school/hei-admin-api/commit/352208894c4bf6dbcdb8ed77c154499b8402b339))
-
-
-
-# [1.67.0](https://github.com/hei-school/hei-admin-api/compare/v1.66.0...v1.67.0) (2024-10-18)
-
-
-### Features
-
-* rearrange exams api and refactor code ([2d95115](https://github.com/hei-school/hei-admin-api/commit/2d9511594d32d39e6659128f70d2921bcf0baacc))
 
 
 
