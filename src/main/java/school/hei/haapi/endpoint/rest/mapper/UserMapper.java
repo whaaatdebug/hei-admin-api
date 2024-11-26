@@ -137,6 +137,34 @@ public class UserMapper {
     return manager;
   }
 
+  public Manager toRestAdmin(User user) {
+    Manager manager = new Manager();
+    String profilePictureKey = user.getProfilePictureKey();
+    String url =
+        profilePictureKey != null
+            ? fileService.getPresignedUrl(profilePictureKey, ONE_DAY_DURATION_AS_LONG)
+            : null;
+
+    manager.setId(user.getId());
+    manager.setFirstName(user.getFirstName());
+    manager.setLastName(user.getLastName());
+    manager.setEmail(user.getEmail());
+    manager.setRef(user.getRef());
+    manager.setStatus(statusEnumMapper.toRestStatus(user.getStatus()));
+    manager.setPhone(user.getPhone());
+    manager.setEntranceDatetime(user.getEntranceDatetime());
+    manager.setBirthDate(user.getBirthDate());
+    manager.setSex(sexEnumMapper.toRestSexEnum(user.getSex()));
+    manager.setAddress(user.getAddress());
+    manager.setBirthPlace(user.getBirthPlace());
+    manager.setNic(user.getNic());
+    manager.setProfilePicture(url);
+    manager.setCoordinates(
+        new Coordinates().longitude(user.getLongitude()).latitude(user.getLatitude()));
+    manager.setHighSchoolOrigin(user.getHighSchoolOrigin());
+    return manager;
+  }
+
   public Monitor toRestMonitor(User user) {
     Monitor monitor = new Monitor();
     String profilePictureKey = user.getProfilePictureKey();

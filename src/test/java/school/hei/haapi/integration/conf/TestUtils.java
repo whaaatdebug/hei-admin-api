@@ -162,6 +162,7 @@ public class TestUtils {
   public static final String MANAGER1_TOKEN = "manager1_token";
   public static final String STAFF_MEMBER1_TOKEN = "staff1_token";
   public static final String ADMIN1_TOKEN = "admin1_token";
+  public static final String ADMIN1_ID = "admin1_id";
   public static final String SUSPENDED_TOKEN = "suspended_token";
   public static final String FEE_TEMPLATE1_ID = "fee_template1";
   public static final String FEE_TEMPLATE2_ID = "fee_template2";

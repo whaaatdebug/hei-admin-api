@@ -149,6 +149,8 @@ public class SecurityConf {
                     antMatcher(PUT, "/teachers/**"),
                     antMatcher(PUT, "/managers/*"),
                     antMatcher(GET, "/managers/*"),
+                    antMatcher(PUT, "/admins/*"),
+                    antMatcher(GET, "/admins/*"),
                     antMatcher(GET, "/managers/**"),
                     antMatcher(GET, "/groups"),
                     antMatcher(GET, "/groups/*"),
@@ -244,7 +246,11 @@ public class SecurityConf {
                     .permitAll()
                     .requestMatchers(GET, "/whoami")
                     .authenticated()
-
+                    //
+                    .requestMatchers(new SelfMatcher(GET, "/admins/*", "admins"))
+                    .hasAnyRole(ADMIN.getRole())
+                    .requestMatchers(new SelfMatcher(PUT, "/admins/*", "admins"))
+                    .hasAnyRole(ADMIN.getRole())
                     //
                     // Announcements resources
                     //
