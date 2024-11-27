@@ -1,3 +1,12 @@
+# [1.82.0](https://github.com/hei-school/hei-admin-api/compare/v1.81.0...v1.82.0) (2024-11-27)
+
+
+### Features
+
+* implement staff members resources ([58f8580](https://github.com/hei-school/hei-admin-api/commit/58f85805776877f672bac1c59d888dc0f416381e))
+
+
+
 # [1.81.0](https://github.com/hei-school/hei-admin-api/compare/v1.80.0...v1.81.0) (2024-11-27)
 
 
@@ -113,15 +122,6 @@
 ### Features
 
 * add student id in event participant model ([afb4cb8](https://github.com/hei-school/hei-admin-api/commit/afb4cb8451b5c3d13e96d5aa899f1e697c527e67))
-
-
-
-# [1.69.0](https://github.com/hei-school/hei-admin-api/compare/v1.68.0...v1.69.0) (2024-10-23)
-
-
-### Features
-
-* link letter and event participant for proof of absence ([36de3af](https://github.com/hei-school/hei-admin-api/commit/36de3afd5428e56f4ee7bcf6273eea62957c8f90))
 
 
 
