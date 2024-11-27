@@ -1953,6 +1953,16 @@ paths:
           description: Filter staff members by sex value return all by default
           schema:
             $ref: '#/components/schemas/Sex'
+        - name: first_name
+          in: query
+          description: Filter staff members by first name, case is ignored
+          schema:
+            type: string
+        - name: last_name
+          in: query
+          description: Filter staff members by last name, case is ignored
+          schema:
+            type: string
       responses:
         '200':
           description: List of staff members, ordered by ref.
@@ -4154,11 +4164,7 @@ paths:
           in: query
           required: false
           schema:
-            type: string
-            enum:
-              - STUDENT
-              - TEACHER
-              - STAFF_MEMBER
+            $ref: '#/components/schemas/RoleParamEnum'
       responses:
         '200':
           description: Letters
@@ -4239,12 +4245,41 @@ paths:
           $ref: '#/components/responses/429'
         '500':
           $ref: '#/components/responses/500'
+  '/students/letters/stats':
+    get:
+      tags:
+        - Letters
+      summary: Get stats for letters
+      operationId: getStudentsLetterStats
+      responses:
+        '200':
+          description: Some stats for letters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LetterStats'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
   '/letters/stats':
     get:
       tags:
         - Letters
       summary: Get stats for letters
       operationId: getLetterStats
+      parameters:
+        - name: role
+          in: query
+          required: false
+          schema:
+            $ref: '#/components/schemas/RoleParamEnum'
       responses:
         '200':
           description: Some stats for letters
@@ -5343,6 +5378,12 @@ components:
       enum:
         - IVANDRY
         - ANDRAHARO
+    RoleParamEnum:
+      type: string
+      enum:
+        - STUDENT
+        - TEACHER
+        - STAFF_MEMBER
     CreateFee:
       type: object
       properties:

@@ -38,6 +38,35 @@ public class UserMapper {
         .email(user.getEmail());
   }
 
+  public StaffMember toRestStaffMember(User user) {
+    StaffMember staffMember = new StaffMember();
+    String profilePictureKey = user.getProfilePictureKey();
+    String url =
+        profilePictureKey != null
+            ? fileService.getPresignedUrl(profilePictureKey, ONE_DAY_DURATION_AS_LONG)
+            : null;
+
+    staffMember.setId(user.getId());
+    staffMember.setFirstName(user.getFirstName());
+    staffMember.setLastName(user.getLastName());
+    staffMember.setEmail(user.getEmail());
+    staffMember.setRef(user.getRef());
+    staffMember.setStatus(statusEnumMapper.toRestStatus(user.getStatus()));
+    staffMember.setPhone(user.getPhone());
+    staffMember.setEntranceDatetime(user.getEntranceDatetime());
+    staffMember.setBirthDate(user.getBirthDate());
+    staffMember.setSex(sexEnumMapper.toRestSexEnum(user.getSex()));
+    staffMember.setAddress(user.getAddress());
+    staffMember.setBirthPlace(user.getBirthPlace());
+    staffMember.setNic(user.getNic());
+    staffMember.setProfilePicture(url);
+    staffMember.setCoordinates(
+        new Coordinates().longitude(user.getLongitude()).latitude(user.getLatitude()));
+    staffMember.setHighSchoolOrigin(user.getHighSchoolOrigin());
+
+    return staffMember;
+  }
+
   public Student toRestStudent(User user) {
     Student restStudent = new Student();
     Optional<WorkDocument> studentLastWorkDocument =
@@ -234,6 +263,30 @@ public class UserMapper {
         .longitude(teacher.getCoordinates().getLongitude())
         .latitude(teacher.getCoordinates().getLatitude())
         .highSchoolOrigin(teacher.getHighSchoolOrigin())
+        .build();
+  }
+
+  public User toDomain(StaffMember teacher) {
+    return User.builder()
+        .role(User.Role.TEACHER)
+        .id(teacher.getId())
+        .firstName(teacher.getFirstName())
+        .lastName(teacher.getLastName())
+        .email(teacher.getEmail())
+        .ref(teacher.getRef())
+        .status(statusEnumMapper.toDomainStatus(teacher.getStatus()))
+        .phone(teacher.getPhone())
+        .entranceDatetime(teacher.getEntranceDatetime())
+        .birthDate(teacher.getBirthDate())
+        .sex(sexEnumMapper.toDomainSexEnum(teacher.getSex()))
+        .address(teacher.getAddress())
+        .nic(teacher.getNic())
+        .birthPlace(teacher.getBirthPlace())
+        .longitude(teacher.getCoordinates().getLongitude())
+        .latitude(teacher.getCoordinates().getLatitude())
+        .highSchoolOrigin(teacher.getHighSchoolOrigin())
+        .degree(teacher.getDegree())
+        .function(teacher.getFunction())
         .build();
   }
 
