@@ -1,3 +1,12 @@
+# [1.81.0](https://github.com/hei-school/hei-admin-api/compare/v1.80.0...v1.81.0) (2024-11-27)
+
+
+### Features
+
+* **not-implemented:** add new attribute to fees statistics  ([cd945d4](https://github.com/hei-school/hei-admin-api/commit/cd945d49277bcc05a632403498a24d3491643e5c))
+
+
+
 # [1.80.0](https://github.com/hei-school/hei-admin-api/compare/v1.79.0...v1.80.0) (2024-11-26)
 
 
@@ -113,20 +122,6 @@
 ### Features
 
 * link letter and event participant for proof of absence ([36de3af](https://github.com/hei-school/hei-admin-api/commit/36de3afd5428e56f4ee7bcf6273eea62957c8f90))
-
-
-
-# [1.68.0](https://github.com/hei-school/hei-admin-api/compare/v1.67.0...v1.68.0) (2024-10-22)
-
-
-### Bug Fixes
-
-* **docs-api:** exam api refactor ([f6eeda4](https://github.com/hei-school/hei-admin-api/commit/f6eeda447580aa479439ee809c32757165990da0))
-
-
-### Features
-
-* **not-implemented:** link letter and event participant ([3522088](https://github.com/hei-school/hei-admin-api/commit/352208894c4bf6dbcdb8ed77c154499b8402b339))
 
 
 
