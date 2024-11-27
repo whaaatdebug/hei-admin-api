@@ -69,6 +69,14 @@ public class LetterIT extends MockedThirdParties {
   }
 
   @Test
+  void admin_read_letters() throws ApiException {
+    ApiClient apiClient = anApiClient(ADMIN1_TOKEN);
+    LettersApi api = new LettersApi(apiClient);
+
+    log.info(api.getLetters(1, 10, null, null, null, null, null, null, null).toString());
+  }
+
+  @Test
   void manager_read_ok() throws ApiException {
     ApiClient apiClient = anApiClient(MANAGER1_TOKEN);
     LettersApi api = new LettersApi(apiClient);

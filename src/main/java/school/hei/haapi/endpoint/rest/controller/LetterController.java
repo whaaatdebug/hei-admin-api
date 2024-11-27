@@ -4,6 +4,7 @@ import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 import static school.hei.haapi.model.User.Role.STUDENT;
 
 import java.util.List;
+import java.util.Objects;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -48,8 +49,9 @@ public class LetterController {
       @RequestParam(name = "status", required = false) LetterStatus status,
       @RequestParam(name = "student_ref", required = false) String studentRef,
       @RequestParam(name = "fee_id", required = false) String feeId,
-      @RequestParam(name = "role", required = false) String role,
+      @RequestParam(name = "role", required = false) RoleParamEnum role,
       @RequestParam(name = "is_linked_with_fee", required = false) Boolean isLinkedWithFee) {
+
     return letterService
         .getLetters(
             ref,
@@ -58,7 +60,7 @@ public class LetterController {
             name,
             feeId,
             isLinkedWithFee,
-            letterMapper.toDomainStatus(role),
+            Objects.isNull(role) ? null : letterMapper.toDomainStatus(role),
             page,
             pageSize)
         .stream()

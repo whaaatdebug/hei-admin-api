@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import school.hei.haapi.endpoint.rest.model.Letter;
 import school.hei.haapi.endpoint.rest.model.LetterFee;
 import school.hei.haapi.endpoint.rest.model.LetterUser;
+import school.hei.haapi.endpoint.rest.model.RoleParamEnum;
 import school.hei.haapi.model.User;
 import school.hei.haapi.service.aws.FileService;
 
@@ -16,12 +17,11 @@ public class LetterMapper {
 
   private final FileService fileService;
 
-  public User.Role toDomainStatus(String role) {
+  public User.Role toDomainStatus(RoleParamEnum role) {
     return switch (role) {
-      case "STUDENT" -> User.Role.STUDENT;
-      case "TEACHER" -> User.Role.TEACHER;
-      case "STAFF_MEMBER" -> User.Role.STAFF_MEMBER;
-      default -> throw new IllegalStateException("Unexpected value: " + role);
+      case STUDENT -> User.Role.STUDENT;
+      case TEACHER -> User.Role.TEACHER;
+      case STAFF_MEMBER -> User.Role.STAFF_MEMBER;
     };
   }
 
