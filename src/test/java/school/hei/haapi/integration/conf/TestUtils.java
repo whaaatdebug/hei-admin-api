@@ -114,6 +114,7 @@ import software.amazon.awssdk.services.eventbridge.model.PutEventsResponse;
 
 public class TestUtils {
 
+  public static final String STAFF_MEMBER1_ID = "staff1_id";
   public static final String STUDENT1_ID = "student1_id";
   public static final String STUDENT2_ID = "student2_id";
   public static final String STUDENT3_ID = "student3_id";

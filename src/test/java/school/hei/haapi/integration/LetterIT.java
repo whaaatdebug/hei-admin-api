@@ -32,12 +32,7 @@ import school.hei.haapi.endpoint.rest.api.LettersApi;
 import school.hei.haapi.endpoint.rest.api.PayingApi;
 import school.hei.haapi.endpoint.rest.client.ApiClient;
 import school.hei.haapi.endpoint.rest.client.ApiException;
-import school.hei.haapi.endpoint.rest.model.EventParticipant;
-import school.hei.haapi.endpoint.rest.model.EventParticipantLetter;
-import school.hei.haapi.endpoint.rest.model.Fee;
-import school.hei.haapi.endpoint.rest.model.FileInfo;
-import school.hei.haapi.endpoint.rest.model.Letter;
-import school.hei.haapi.endpoint.rest.model.UpdateLettersStatus;
+import school.hei.haapi.endpoint.rest.model.*;
 import school.hei.haapi.integration.conf.AbstractContextInitializer;
 import school.hei.haapi.integration.conf.MockedThirdParties;
 import school.hei.haapi.integration.conf.TestUtils;
@@ -60,12 +55,31 @@ public class LetterIT extends MockedThirdParties {
   }
 
   @Test
-  void manager_read_all_ok() throws Exception {
+  void manager_read_ko() {
     ApiClient apiClient = anApiClient(MANAGER1_TOKEN);
     LettersApi api = new LettersApi(apiClient);
 
+    assertThrowsForbiddenException(() -> api.getLetterStats(null));
     assertThrowsForbiddenException(
         () -> api.getLetters(1, 15, null, null, null, null, null, null, null));
+  }
+
+  @Test
+  void manager_read_stats_ok() throws ApiException {
+    ApiClient apiClient = anApiClient(MANAGER1_TOKEN);
+    LettersApi api = new LettersApi(apiClient);
+
+    LetterStats letterStats = api.getStudentsLetterStats();
+    assertNotNull(letterStats);
+  }
+
+  @Test
+  void admin_read_stats_ok() throws ApiException {
+    ApiClient apiClient = anApiClient(ADMIN1_TOKEN);
+    LettersApi api = new LettersApi(apiClient);
+
+    LetterStats letterStats = api.getStudentsLetterStats();
+    assertNotNull(letterStats);
   }
 
   @Test
@@ -74,6 +88,17 @@ public class LetterIT extends MockedThirdParties {
     LettersApi api = new LettersApi(apiClient);
 
     log.info(api.getLetters(1, 10, null, null, null, null, null, null, null).toString());
+  }
+
+  @Test
+  void staff_read_letters() throws ApiException {
+    ApiClient apiClient = anApiClient(STAFF_MEMBER1_TOKEN);
+    LettersApi api = new LettersApi(apiClient);
+
+    List<Letter> letters = api.getLettersByUserId(STAFF_MEMBER1_ID, 1, 15, null);
+    assertEquals(1, letters.size());
+
+    assertThrowsForbiddenException(() -> api.getLetterStats(null));
   }
 
   @Test

@@ -172,7 +172,13 @@ public class LetterService {
         .toList();
   }
 
-  public LetterStats getStats() {
+  public LetterStats getStats(User.Role role) {
+    if (Objects.nonNull(role)) {
+      return new LetterStats()
+          .pending(letterRepository.countByStatusAndUserRole(PENDING, role))
+          .rejected(letterRepository.countByStatusAndUserRole(REJECTED, role))
+          .received(letterRepository.countByStatusAndUserRole(RECEIVED, role));
+    }
     return new LetterStats()
         .pending(letterRepository.countByStatus(PENDING))
         .rejected(letterRepository.countByStatus(REJECTED))

@@ -69,8 +69,13 @@ public class LetterController {
   }
 
   @GetMapping(value = "/letters/stats")
-  public LetterStats getStats() {
-    return letterService.getStats();
+  public LetterStats getStats(@RequestParam RoleParamEnum role) {
+    return letterService.getStats(letterMapper.toDomainStatus(role));
+  }
+
+  @GetMapping(value = "/students/letters/stats")
+  public LetterStats getStudentsStats() {
+    return letterService.getStats(STUDENT);
   }
 
   @PutMapping(value = "/letters")

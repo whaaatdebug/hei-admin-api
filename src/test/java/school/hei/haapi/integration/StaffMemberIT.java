@@ -57,7 +57,15 @@ public class StaffMemberIT extends MockedThirdParties {
     ApiClient apiClient = anApiClient(ADMIN1_TOKEN);
     UsersApi api = new UsersApi(apiClient);
 
-    assertNotNull(api.getStaffMemberById("staff1_id"));
+    assertNotNull(api.getStaffMemberById(STAFF_MEMBER1_ID));
+  }
+
+  @Test
+  void staff_read_staff_by_id_ok() throws ApiException {
+    ApiClient apiClient = anApiClient(STAFF_MEMBER1_TOKEN);
+    UsersApi api = new UsersApi(apiClient);
+
+    assertNotNull(api.getStaffMemberById(STAFF_MEMBER1_ID));
   }
 
   @Test
@@ -66,7 +74,7 @@ public class StaffMemberIT extends MockedThirdParties {
     UsersApi api = new UsersApi(apiClient);
 
     assertThrowsForbiddenException(() -> api.getStaffMembers(1, 15, null, null, null, null));
-    assertThrowsForbiddenException(() -> api.getStaffMemberById("staff1_id"));
+    assertThrowsForbiddenException(() -> api.getStaffMemberById(STAFF_MEMBER1_ID));
   }
 
   static class ContextInitializer extends AbstractContextInitializer {
