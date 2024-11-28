@@ -1,3 +1,18 @@
+# [1.83.0](https://github.com/hei-school/hei-admin-api/compare/v1.82.0...v1.83.0) (2024-11-28)
+
+
+### Bug Fixes
+
+* handle role param null case in letter endpoint ([62d78a3](https://github.com/hei-school/hei-admin-api/commit/62d78a33aa71b03bf6e98438e16314252b53e6c4))
+
+
+### Features
+
+* letter stats for admin ([6bccb5e](https://github.com/hei-school/hei-admin-api/commit/6bccb5e83617d1ba3f6e897306ad479522c6b866))
+* update staff members access ([2cce4b1](https://github.com/hei-school/hei-admin-api/commit/2cce4b1b48261ab853b00fbb869e091d1af23f40))
+
+
+
 # [1.82.0](https://github.com/hei-school/hei-admin-api/compare/v1.81.0...v1.82.0) (2024-11-27)
 
 
@@ -113,15 +128,6 @@
 * **not-implemented:** add endpoint specific for exams creation and retrieve ([56063df](https://github.com/hei-school/hei-admin-api/commit/56063df42d44a2b9447afcd9e28b2a18df39bd6a))
 * **not-implemented:** get monthy fees statistics ([cff0772](https://github.com/hei-school/hei-admin-api/commit/cff07722f3364fcb839366b980a722e56956cceb))
 * stats is available in event model ([c489d9e](https://github.com/hei-school/hei-admin-api/commit/c489d9ed86d3358bbabccc553ba35bcbe441f20f))
-
-
-
-# [1.70.0](https://github.com/hei-school/hei-admin-api/compare/v1.69.0...v1.70.0) (2024-10-23)
-
-
-### Features
-
-* add student id in event participant model ([afb4cb8](https://github.com/hei-school/hei-admin-api/commit/afb4cb8451b5c3d13e96d5aa899f1e697c527e67))
 
 
 
