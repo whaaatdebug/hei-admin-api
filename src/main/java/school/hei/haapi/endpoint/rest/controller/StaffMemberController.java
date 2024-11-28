@@ -1,5 +1,6 @@
 package school.hei.haapi.endpoint.rest.controller;
 
+import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 import static school.hei.haapi.model.User.Role.STAFF_MEMBER;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import school.hei.haapi.endpoint.rest.mapper.SexEnumMapper;
 import school.hei.haapi.endpoint.rest.mapper.StatusEnumMapper;
 import school.hei.haapi.endpoint.rest.mapper.UserMapper;
@@ -43,6 +45,14 @@ public class StaffMemberController {
     return userService.getByRole(STAFF_MEMBER, page, pageSize, domainStatus, domainSex).stream()
         .map(userMapper::toRestStaffMember)
         .toList();
+  }
+
+  @PostMapping(value = "/staff_members/{id}/picture/raw", consumes = MULTIPART_FORM_DATA_VALUE)
+  public StaffMember uploadStaffMembersProfilePicture(
+      @RequestPart("file_to_upload") MultipartFile profilePictureAsMultipartFile,
+      @PathVariable String id) {
+    userService.uploadUserProfilePicture(profilePictureAsMultipartFile, id);
+    return userMapper.toRestStaffMember(userService.findById(id));
   }
 
   @PutMapping("/staff_members")

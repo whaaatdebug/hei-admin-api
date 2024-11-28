@@ -7,6 +7,7 @@ public enum Role implements GrantedAuthority {
   MONITOR,
   STUDENT,
   TEACHER,
+  STAFF_MEMBER,
   MANAGER;
 
   public String getRole() {
