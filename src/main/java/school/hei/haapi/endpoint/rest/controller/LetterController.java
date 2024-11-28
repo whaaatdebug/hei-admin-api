@@ -70,7 +70,7 @@ public class LetterController {
 
   @GetMapping(value = "/letters/stats")
   public LetterStats getStats(@RequestParam(required = false) RoleParamEnum role) {
-    return letterService.getStats(letterMapper.toDomainStatus(role));
+    return letterService.getStats(Objects.isNull(role) ? null : letterMapper.toDomainStatus(role));
   }
 
   @GetMapping(value = "/students/letters/stats")
