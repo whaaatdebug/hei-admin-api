@@ -166,32 +166,32 @@ public class UserMapper {
     return manager;
   }
 
-  public Manager toRestAdmin(User user) {
-    Manager manager = new Manager();
+  public Admin toRestAdmin(User user) {
+    Admin admin = new Admin();
     String profilePictureKey = user.getProfilePictureKey();
     String url =
         profilePictureKey != null
             ? fileService.getPresignedUrl(profilePictureKey, ONE_DAY_DURATION_AS_LONG)
             : null;
 
-    manager.setId(user.getId());
-    manager.setFirstName(user.getFirstName());
-    manager.setLastName(user.getLastName());
-    manager.setEmail(user.getEmail());
-    manager.setRef(user.getRef());
-    manager.setStatus(statusEnumMapper.toRestStatus(user.getStatus()));
-    manager.setPhone(user.getPhone());
-    manager.setEntranceDatetime(user.getEntranceDatetime());
-    manager.setBirthDate(user.getBirthDate());
-    manager.setSex(sexEnumMapper.toRestSexEnum(user.getSex()));
-    manager.setAddress(user.getAddress());
-    manager.setBirthPlace(user.getBirthPlace());
-    manager.setNic(user.getNic());
-    manager.setProfilePicture(url);
-    manager.setCoordinates(
+    admin.setId(user.getId());
+    admin.setFirstName(user.getFirstName());
+    admin.setLastName(user.getLastName());
+    admin.setEmail(user.getEmail());
+    admin.setRef(user.getRef());
+    admin.setStatus(statusEnumMapper.toRestStatus(user.getStatus()));
+    admin.setPhone(user.getPhone());
+    admin.setEntranceDatetime(user.getEntranceDatetime());
+    admin.setBirthDate(user.getBirthDate());
+    admin.setSex(sexEnumMapper.toRestSexEnum(user.getSex()));
+    admin.setAddress(user.getAddress());
+    admin.setBirthPlace(user.getBirthPlace());
+    admin.setNic(user.getNic());
+    admin.setProfilePicture(url);
+    admin.setCoordinates(
         new Coordinates().longitude(user.getLongitude()).latitude(user.getLatitude()));
-    manager.setHighSchoolOrigin(user.getHighSchoolOrigin());
-    return manager;
+    admin.setHighSchoolOrigin(user.getHighSchoolOrigin());
+    return admin;
   }
 
   public Monitor toRestMonitor(User user) {
