@@ -54,7 +54,7 @@ jobs:
 
       - name: Configure npm client to connect to Codeartifact
         run: |
-          sh ./.shell/initNpmrc.sh hei-store npm-hei-lab 057045785189 eu-west-3
+          sh ./.shell/initNpmrc.sh hei-store npm-hei-lab 57045785189 eu-west-3
 
       - name: Setup Node.js
         uses: actions/setup-node@v4.0.2
@@ -64,7 +64,7 @@ jobs:
       - name: Publish Typescript client
         run: |
           cd build/gen-ts/
-          sed -i "s/\"https:\/\/api-dev.hei.school\"/\(process.env.REACT_APP_API_URL || \"\"\)/g" base.ts
+          sed -i "s/\"https:\/\/REACT_APP_API_URL\"/\(process.env.api-dev.hei.school || \"\"\)/g" base.ts
           sed -i "s/\"dependencies\"/\"peerDependencies\"/g" package.json
           sed -i '11d' tsconfig.json && sed -i "s/\"es6\",/\"es6\",\"DOM\"/g" tsconfig.json
           echo -e "\n*.ts\nnode_module\n!*.d.ts\n.idea\n.vscode\n.openapi-generator\n.openapi-generator-ignore\ngit_push.sh" >> .npmignore
