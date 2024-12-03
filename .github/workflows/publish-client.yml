@@ -54,7 +54,7 @@ jobs:
 
       - name: Configure npm client to connect to Codeartifact
         run: |
-          sh ./.shell/initNpmrc.sh hei-store npm-hei-lab 57045785189 eu-west-3
+          sh ./.shell/initNpmrc.sh hei-store npm-hei-lab 057045785189 eu-west-3
 
       - name: Setup Node.js
         uses: actions/setup-node@v4.0.2

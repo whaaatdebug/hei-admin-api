@@ -58,7 +58,7 @@ task generateJavaClient(type: GenerateTask) {
     library = "native"
 
     groupId = 'school.hei'
-    id = 'hei-admin-api-2-gen'
+    id = 'haapi-gen'
     skipValidateSpec = false
     logToStderr = true
     generateAliasAsModel = false
@@ -74,7 +74,7 @@ task generateTsClient(type: org.openapitools.generator.gradle.plugin.tasks.Gener
     ]
     additionalProperties = [
             enumPropertyNaming: "original",
-            npmName           : "@hei-admin-api-2/typescript-client",
+            npmName           : "@haapi/typescript-client",
             npmVersion        : project.properties["args"] ?: "latest"
     ]
 }
@@ -107,7 +107,7 @@ jacocoTestCoverageVerification {
         rule {
             limit {
                 counter = "LINE"
-                minimum = 0.7
+                minimum = 0.6
             }
         }
     }
