@@ -89,4 +89,4 @@ jobs:
           curl -X POST "https://api.preprod.jcloudify.com/gh-repos/${{ github.repository }}/github-workflow-state" \
           -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
           -H "Content-Type: application/json" \
-          -d "{\"app_env_deployment_id\":$app_env_deployment_id_value, \"commit_sha\":\"${{ github.sha }}\",\"commit_message\":$(echo \"$commit_message\"), \"commit_author_name\":$(echo \"$GITHUB_ACTOR\"), \"status\":\"WORKFLOW_FAILED\", \"environment_type\":$(echo \"${{ github.ref_name }}\" | tr \"[:lower:]\" \'[:upper:]\")}"
+          -d "{\"app_env_deployment_id\":$app_env_deployment_id_value, \"commit_sha\":\"${{ github.sha }}\", \"commit_message\":$(echo \"$commit_message\"), \"commit_author_name\":$(echo \"$commit_author\"), \"status\":\"WORKFLOW_FAILED\", \"environment_type\":$(echo \"${{ github.ref_name }}\" | tr \"[:lower:]\" \'[:upper:]\")}"

@@ -10,7 +10,7 @@ plugins {
 
     id 'jacoco'
 
-
+    
 }
 
 jacoco {
@@ -58,7 +58,7 @@ task generateJavaClient(type: GenerateTask) {
     library = "native"
 
     groupId = 'school.hei'
-    id = 'haapi-gen'
+    id = 'haapi-test-gen'
     skipValidateSpec = false
     logToStderr = true
     generateAliasAsModel = false
@@ -74,7 +74,7 @@ task generateTsClient(type: org.openapitools.generator.gradle.plugin.tasks.Gener
     ]
     additionalProperties = [
             enumPropertyNaming: "original",
-            npmName           : "@haapi/typescript-client",
+            npmName           : "@haapi-test/typescript-client",
             npmVersion        : project.properties["args"] ?: "latest"
     ]
 }
@@ -89,7 +89,9 @@ tasks.compileJava.dependsOn publishJavaClientToMavenLocal
 
 
 test {
-    exclude '**/*'
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+    useJUnitPlatform()
+    finalizedBy jacocoTestCoverageVerification
 }
 
 jacocoTestCoverageVerification {
@@ -105,7 +107,7 @@ jacocoTestCoverageVerification {
         rule {
             limit {
                 counter = "LINE"
-                minimum = 0.6
+                minimum = 0.7
             }
         }
     }
@@ -222,6 +224,6 @@ implementation 'org.dhatim:fastexcel:0.18.4'
 testImplementation 'org.mockito:mockito-core:5.3.1'
 implementation 'org.springdoc:springdoc-openapi-ui:1.7.0'
 
-
+    
 
 }

@@ -25,60 +25,60 @@ import school.hei.haapi.file.hash.FileHash;
 @AllArgsConstructor
 public class HealthBucketController {
 
-	BucketComponent bucketComponent;
+  BucketComponent bucketComponent;
 
-	private static final String HEALTH_KEY = "health/";
+  private static final String HEALTH_KEY = "health/";
 
-	@GetMapping(value = "/health/bucket")
-	public ResponseEntity<String> file_can_be_uploaded_then_signed() throws IOException {
-		var fileSuffix = ".txt";
-		var filePrefix = randomUUID().toString();
-		var fileToUpload = createTempFile(filePrefix, fileSuffix);
-		writeRandomContent(fileToUpload);
-		var fileBucketKey = HEALTH_KEY + filePrefix + fileSuffix;
-		can_upload_file_then_download_file(fileToUpload, fileBucketKey);
+  @GetMapping(value = "/health/bucket")
+  public ResponseEntity<String> file_can_be_uploaded_then_signed() throws IOException {
+    var fileSuffix = ".txt";
+    var filePrefix = randomUUID().toString();
+    var fileToUpload = createTempFile(filePrefix, fileSuffix);
+    writeRandomContent(fileToUpload);
+    var fileBucketKey = HEALTH_KEY + filePrefix + fileSuffix;
+    can_upload_file_then_download_file(fileToUpload, fileBucketKey);
 
-		var directoryPrefix = "dir-" + randomUUID();
-		var directoryToUpload = createTempDirectory(directoryPrefix).toFile();
-		var fileInDirectory =
-			new File(directoryToUpload.getAbsolutePath() + "/" + randomUUID() + ".txt");
-		writeRandomContent(fileInDirectory);
-		var directoryBucketKey = HEALTH_KEY + directoryPrefix;
-		can_upload_directory(directoryToUpload, directoryBucketKey);
+    var directoryPrefix = "dir-" + randomUUID();
+    var directoryToUpload = createTempDirectory(directoryPrefix).toFile();
+    var fileInDirectory =
+        new File(directoryToUpload.getAbsolutePath() + "/" + randomUUID() + ".txt");
+    writeRandomContent(fileInDirectory);
+    var directoryBucketKey = HEALTH_KEY + directoryPrefix;
+    can_upload_directory(directoryToUpload, directoryBucketKey);
 
-		return ResponseEntity.of(Optional.of(can_presign(fileBucketKey).toString()));
-	}
+    return ResponseEntity.of(Optional.of(can_presign(fileBucketKey).toString()));
+  }
 
-	private void writeRandomContent(File file) throws IOException {
-		FileWriter writer = new FileWriter(file);
-		var content = randomUUID().toString();
-		writer.write(content);
-		writer.close();
-	}
+  private void writeRandomContent(File file) throws IOException {
+    FileWriter writer = new FileWriter(file);
+    var content = randomUUID().toString();
+    writer.write(content);
+    writer.close();
+  }
 
-	private File can_upload_file_then_download_file(File toUpload, String bucketKey)
-		throws IOException {
-		bucketComponent.upload(toUpload, bucketKey);
+  private File can_upload_file_then_download_file(File toUpload, String bucketKey)
+      throws IOException {
+    bucketComponent.upload(toUpload, bucketKey);
 
-		var downloaded = bucketComponent.download(bucketKey);
-		var downloadedContent = Files.readString(downloaded.toPath());
-		var uploadedContent = Files.readString(toUpload.toPath());
-		if (!uploadedContent.equals(downloadedContent)) {
-			throw new RuntimeException("Uploaded and downloaded contents mismatch");
-		}
+    var downloaded = bucketComponent.download(bucketKey);
+    var downloadedContent = Files.readString(downloaded.toPath());
+    var uploadedContent = Files.readString(toUpload.toPath());
+    if (!uploadedContent.equals(downloadedContent)) {
+      throw new RuntimeException("Uploaded and downloaded contents mismatch");
+    }
 
-		return downloaded;
-	}
+    return downloaded;
+  }
 
-	private FileHash can_upload_directory(File toUpload, String bucketKey) {
-		var hash = bucketComponent.upload(toUpload, bucketKey);
-		if (!NONE.equals(hash.algorithm())) {
-			throw new RuntimeException("FileHashAlgorithm.NONE expected but got: " + hash.algorithm());
-		}
-		return hash;
-	}
+  private FileHash can_upload_directory(File toUpload, String bucketKey) {
+    var hash = bucketComponent.upload(toUpload, bucketKey);
+    if (!NONE.equals(hash.algorithm())) {
+      throw new RuntimeException("FileHashAlgorithm.NONE expected but got: " + hash.algorithm());
+    }
+    return hash;
+  }
 
-	private URL can_presign(String fileBucketKey) {
-		return bucketComponent.presign(fileBucketKey, Duration.ofMinutes(2));
-	}
+  private URL can_presign(String fileBucketKey) {
+    return bucketComponent.presign(fileBucketKey, Duration.ofMinutes(2));
+  }
 }
